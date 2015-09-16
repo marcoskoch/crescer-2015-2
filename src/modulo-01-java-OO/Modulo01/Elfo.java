@@ -12,9 +12,10 @@ public class Elfo {
     this(nome, 42);
   }
 
-  public void atirarFlecha(){
+  public void atirarFlecha(Dwarf dwarf){
     flechas--;
     exp++;
+    dwarf.levaFlechada();
   }
 
 
