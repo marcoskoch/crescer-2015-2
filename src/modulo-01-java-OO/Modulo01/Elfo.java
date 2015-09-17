@@ -2,10 +2,12 @@ public class Elfo {
   private String nome;
   private int flechas;
   private int exp = 0;
+  private Status status;
 
   public Elfo(String nome, int flechas) {
     this.nome = nome;
     this.flechas = flechas;
+    this.status = Status.VIVO;
   }
 
   public Elfo(String nome){
@@ -18,8 +20,8 @@ public class Elfo {
     dwarf.levaFlechada();
   }
 
-  public void descricaoElfo(){
-    System.out.println("Legolas possui "+flechas+" flechas e "+exp+" níveis de experiência.");
+  public String toString(){
+    return "Legolas possui "+flechas+" flechas e "+exp+" níveis de experiência.";
   }
       
   public String getNome() {

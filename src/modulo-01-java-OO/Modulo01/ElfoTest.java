@@ -30,7 +30,7 @@ public class ElfoTest
     @Test
     public void elfoAtiraFlecha(){
     	Elfo legolas = new Elfo("legolas");
-        legolas.atirarFlecha(new Dwarf());
+        legolas.atirarFlecha(new Dwarf("Tosco"));
         assertEquals(41, legolas.getFlechas());
         assertEquals(1, legolas.getExp());
     }
