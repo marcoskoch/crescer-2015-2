@@ -31,6 +31,10 @@ public class Elfo {
   public int getFlechas() {
     return this.flechas;
   }
+  
+  public int getExp(){
+    return this.exp;
+  }
 
 /*
 public void setFlechas(int flechas) {
