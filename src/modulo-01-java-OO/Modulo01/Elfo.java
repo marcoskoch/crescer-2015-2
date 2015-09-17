@@ -18,8 +18,10 @@ public class Elfo {
     dwarf.levaFlechada();
   }
 
-
-
+  public void descricaoElfo(){
+    System.out.println("Legolas possui "+flechas+" flechas e "+exp+" níveis de experiência.");
+  }
+      
   public String getNome() {
     return nome;
   }
