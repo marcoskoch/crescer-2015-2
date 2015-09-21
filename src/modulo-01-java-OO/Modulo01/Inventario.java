@@ -31,16 +31,16 @@ public class Inventario {
         }
     }
     
-    public void aumentarItensIrishDwarf() {
-        int aux = 0;
-        
-        for (Item item : this.itens) {
-            aux = (item.getQuantidade() * (item.getQuantidade() + 1))/2;
-            
-            item.aumentar1000UnidadesIrishDwarf(aux);
-            aux = 0;
-        }
-    }
+//     public void aumentarItensIrishDwarf() {
+//         int aux = 0;
+//         
+//         for (Item item : this.itens) {
+//             aux = (item.getQuantidade() * (item.getQuantidade() + 1))/2;
+//             
+//             item.aumentar1000UnidadesIrishDwarf(aux);
+//             aux = 0;
+//         }
+//     }
     
     public Item getItemComMaiorQuantidade() {
         int indice = 0, maiorQtd = 0;
