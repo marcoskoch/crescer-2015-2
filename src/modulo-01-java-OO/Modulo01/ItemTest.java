@@ -35,4 +35,11 @@ public class ItemTest
         espada.aumentar1000Unidades();
         assertEquals(1042, espada.getQuantidade());
     }
+    
+//     @Test
+//     public void shimbalaieCerto() {
+//         Item espada = new Item(3, "Espada");
+//         espada.shimbalaie();
+//         assertEquals(6003, espada.getQuantidade());
+//     }
 }

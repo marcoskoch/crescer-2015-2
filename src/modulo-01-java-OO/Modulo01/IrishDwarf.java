@@ -6,7 +6,7 @@ public class IrishDwarf
     private Status status;
     private DataTerceiraEra dataNascimento;
     private Inventario inventario;
-    
+
     public IrishDwarf() {
         this.vida = 110;
         this.status = Status.VIVO;
@@ -78,26 +78,26 @@ public class IrishDwarf
 
         return resultado;
     }
-    
+
     public void adicionarItem(Item item) {
         this.inventario.adicionarItem(item);
     }
-    
+
     public void perderItem(Item item) {
         this.inventario.perderItem(item);
     }
-    
+
     public Inventario getInventario() {
         return this.inventario;
     }
-    
+
     public void tentarSorte() {
         double numero = gerarNumero();
-        
+
         if (numero == -3333.0) {
             this.inventario.aumentarItensIrishDwarf();
         }
     }
-    
-    
+
+   
 }

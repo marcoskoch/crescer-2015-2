@@ -35,9 +35,7 @@ public class Inventario {
         int aux = 0;
         
         for (Item item : this.itens) {
-            for (int i = 0; i < item.getQuantidade(); i++) {
-                aux += i + 1;
-            }
+            aux = (item.getQuantidade() * (item.getQuantidade() + 1))/2;
             
             item.aumentar1000UnidadesIrishDwarf(aux);
             aux = 0;

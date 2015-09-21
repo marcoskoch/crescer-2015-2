@@ -35,4 +35,9 @@ public class Item
         Item outro = (Item)obj;
         return this.descricao.equals(outro.getDescricao()) && this.quantidade == outro.getQuantidade();
     }
+    
+//      public void shimbalaie() {
+//         int pa = (this.quantidade * (this.quantidade+1)) / 2;
+//         this.quantidade += (1000 * pa);
+//     }
 }
