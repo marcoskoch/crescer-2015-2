@@ -6,25 +6,25 @@ import org.junit.Test;
 public class IrishDwarfTest
 {
     @Test
-    public void IrishDwarfNasceCom110DeVida() {
+    public void irishDwarfNasceCom110DeVida() {
         IrishDwarf gimli = new IrishDwarf();
         assertEquals(110, gimli.getVida());
     }
 
     @Test
-    public void IrishDwarfNasceVivo() {
+    public void irishDwarfNasceVivo() {
         IrishDwarf balin = new IrishDwarf();
         assertEquals(Status.VIVO, balin.getStatus());
     }
 
     @Test
-    public void IrishDwarfNasceCom0DeExperiencia() {
+    public void irishDwarfNasceCom0DeExperiencia() {
         IrishDwarf balin = new IrishDwarf();
         assertEquals(0, balin.getExperiencia());
     }
 
     @Test
-    public void IrishDwarfNasceComDataNascimentoPadrão() {
+    public void irishDwarfNasceComDataNascimentoPadrão() {
         IrishDwarf bofur = new IrishDwarf();
         DataTerceiraEra esperada = new DataTerceiraEra(1,1,1);
         DataTerceiraEra obtida = bofur.getDataNascimento();
@@ -32,7 +32,7 @@ public class IrishDwarfTest
     }
 
     @Test
-    public void IrishDwarfNasceComNomeEDataDeNascimento() {
+    public void irishDwarfNasceComNomeEDataDeNascimento() {
         DataTerceiraEra esperada = new DataTerceiraEra(12,11,1987);
         IrishDwarf bernardin = new IrishDwarf("Bernardin", new DataTerceiraEra(12, 11, 1987));
         assertEquals(esperada, bernardin.getDataNascimento());
@@ -40,13 +40,13 @@ public class IrishDwarfTest
     }
 
     @Test
-    public void IrishDwarfNasceComNome() {
+    public void irishDwarfNasceComNome() {
         IrishDwarf oin = new IrishDwarf("Oin II");
         assertEquals("Oin II", oin.getNome());
     }
 
     @Test
-    public void IrishDwarfRecebeFlechaEPerde10Vida() {
+    public void irishDwarfRecebeFlechaEPerde10Vida() {
         // AAA
         // Arrange
         IrishDwarf gimli = new IrishDwarf();
@@ -58,7 +58,7 @@ public class IrishDwarfTest
     }
 
     @Test
-    public void IrishDwarfRecebeFlecha11VezesEVidaÉ0() {
+    public void irishDwarfRecebeFlecha11VezesEVidaÉ0() {
         IrishDwarf gimli = new IrishDwarf();
         int vidaEsperada = 0;
         // Act
@@ -78,7 +78,7 @@ public class IrishDwarfTest
     }
 
     @Test
-    public void IrishDwarfRecebeFlecha7VezesEVidaÉ40() {
+    public void irishDwarfRecebeFlecha7VezesEVidaÉ40() {
         IrishDwarf gimli = new IrishDwarf();
         int vidaEsperada = 40;
         // Act
@@ -94,7 +94,7 @@ public class IrishDwarfTest
     }
 
     @Test
-    public void IrishDwarfRecebeFlecha5VezesESobrevive() {
+    public void irishDwarfRecebeFlecha5VezesESobrevive() {
         IrishDwarf gimli = new IrishDwarf();
         // Act
         gimli.receberFlechada();
@@ -107,7 +107,7 @@ public class IrishDwarfTest
     }
 
     @Test
-    public void IrishDwarfRecebeFlecha12VezesEMorre() {
+    public void irishDwarfRecebeFlecha12VezesEMorre() {
         IrishDwarf gimli = new IrishDwarf();
         // Act
         gimli.receberFlechada();
@@ -127,7 +127,7 @@ public class IrishDwarfTest
     }
 
     @Test
-    public void IrishDwarfRecebeFlecha13VezesEVidaFicaZerada() {
+    public void irishDwarfRecebeFlecha13VezesEVidaFicaZerada() {
         IrishDwarf gimli = new IrishDwarf();
         // Act
         gimli.receberFlechada();
@@ -181,7 +181,7 @@ public class IrishDwarfTest
     }
 
     @Test
-    public void IrishDwarfRecebeFlechaComNumeroSorteNegativo() {
+    public void irishDwarfRecebeFlechaComNumeroSorteNegativo() {
         // Arrange
         IrishDwarf IrishDwarf = new IrishDwarf("Gimli", new DataTerceiraEra(1,1,2000));
         IrishDwarf.receberFlechada();
@@ -194,7 +194,7 @@ public class IrishDwarfTest
     }
 
     @Test
-    public void IrishDwarfReceberFlechadaComAnoNormalMeireles() {
+    public void irishDwarfReceberFlechadaComAnoNormalMeireles() {
         IrishDwarf meireles = new IrishDwarf("Meireles", new DataTerceiraEra(2, 3, 2015));
         meireles.receberFlechada();
         assertEquals(0, meireles.getExperiencia());
@@ -202,7 +202,7 @@ public class IrishDwarfTest
     }
 
     @Test
-    public void IrishDwarfReceberFlechadaNormal(){
+    public void irishDwarfReceberFlechadaNormal(){
         IrishDwarf IrishDwarf = new IrishDwarf();
         IrishDwarf.receberFlechada();
         assertEquals(100, IrishDwarf.getVida());
@@ -210,7 +210,7 @@ public class IrishDwarfTest
     }
 
     @Test
-    public void IrishDwarfTentarSorteComSorte() {
+    public void irishDwarfTentarSorteComSorte() {
         IrishDwarf IrishDwarf = new IrishDwarf("Leprechaun sortudo", new DataTerceiraEra(1, 1, 2000));
         IrishDwarf.receberFlechada();
         IrishDwarf.receberFlechada();
@@ -227,7 +227,7 @@ public class IrishDwarfTest
     }
 
     @Test
-    public void IrishDwarfTentarSorteSemSorte() {
+    public void irishDwarfTentarSorteSemSorte() {
         IrishDwarf IrishDwarf = new IrishDwarf();
         IrishDwarf.adicionarItem(new Item(5, "Lança"));
         IrishDwarf.adicionarItem(new Item(25, "Poção"));
