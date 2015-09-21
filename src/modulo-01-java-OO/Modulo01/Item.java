@@ -26,6 +26,11 @@ public class Item
         this.quantidade += 1000;
     }
     
+    
+    public void aumentar1000UnidadesIrishDwarf(int itens) {
+        this.quantidade += 1000 * itens;
+    }
+    
     public boolean equals(Object obj) {
         Item outro = (Item)obj;
         return this.descricao.equals(outro.getDescricao()) && this.quantidade == outro.getQuantidade();

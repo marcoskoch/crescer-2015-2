@@ -31,6 +31,19 @@ public class Inventario {
         }
     }
     
+    public void aumentarItensIrishDwarf() {
+        int aux = 0;
+        
+        for (Item item : this.itens) {
+            for (int i = 0; i < item.getQuantidade(); i++) {
+                aux += i + 1;
+            }
+            
+            item.aumentar1000UnidadesIrishDwarf(aux);
+            aux = 0;
+        }
+    }
+    
     public Item getItemComMaiorQuantidade() {
         int indice = 0, maiorQtd = 0;
         
