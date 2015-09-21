@@ -4,9 +4,6 @@ public class Inventario
 {
     ArrayList <Item> inventario = new ArrayList <Item> ();
 
-    public Inventario (){
-    }
-
     public void adicionarItem(Item item){
         inventario.add(item);
     }
