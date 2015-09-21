@@ -3,6 +3,7 @@ public class Dwarf {
     private int vida, experiencia;
     private Status status;
     private DataTerceiraEra dataNascimento;
+    private Inventario inventario = new Inventario();
 
     public Dwarf() {
         this.vida = 110;
