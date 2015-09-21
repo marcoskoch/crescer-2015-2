@@ -36,10 +36,11 @@ public class ItemTest
         assertEquals(1042, espada.getQuantidade());
     }
     
-//     @Test
-//     public void shimbalaieCerto() {
-//         Item espada = new Item(3, "Espada");
-//         espada.shimbalaie();
-//         assertEquals(6003, espada.getQuantidade());
-//     }
+    @Test
+    public void aumentarQuantidadesComSomatorio() {
+        Item espada = new Item(5, "Espada");
+        espada.aumentarQuantidadesComSomatorio();
+        
+        assertEquals(15005, espada.getQuantidade());
+    }
 }

@@ -2,7 +2,7 @@ public class Item
 {
     private String descricao;
     private int quantidade;
-    
+
     /**
      * Cria um item de inventário com a quantidade e descrição informadas
      * 
@@ -13,31 +13,34 @@ public class Item
         this.quantidade = quantidade;
         this.descricao = descricao;
     }
-    
+
     public String getDescricao() {
         return this.descricao;
     }
-    
+
     public int getQuantidade() {
         return this.quantidade;
     }
-    
+
     public void aumentar1000Unidades() {
         this.quantidade += 1000;
     }
-    
-    
-    public void aumentar1000UnidadesIrishDwarf(int itens) {
-        this.quantidade += 1000 * itens;
+
+    public void aumentarQuantidadesComSomatorio() {
+        int pa = this.quantidade * (this.quantidade+1) / 2;
+        this.quantidade += 1000 * pa;
     }
-    
+
+    /*
+     * Exercício de refatoração:
+    public void shimbalaie() {
+        int pa = this.quantidade * (this.quantidade+1) / 2;
+        this.quantidade += 1000*pa;
+    }
+    */
+
     public boolean equals(Object obj) {
         Item outro = (Item)obj;
         return this.descricao.equals(outro.getDescricao()) && this.quantidade == outro.getQuantidade();
     }
-    
-//      public void shimbalaie() {
-//         int pa = (this.quantidade * (this.quantidade+1)) / 2;
-//         this.quantidade += (1000 * pa);
-//     }
 }

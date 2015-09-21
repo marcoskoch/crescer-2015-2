@@ -93,6 +93,12 @@ public class Inventario {
         // itens.sort_by { |x| x.quantidade }
     }
     
+    public void aumentarUnidadesComSomatorio() {
+        for (Item item : this.itens) {
+            item.aumentarQuantidadesComSomatorio();
+        }
+    }
+    
     public boolean equals(Object obj) {
         Inventario outroInventario = (Inventario)obj;
         return this.itens.equals(outroInventario.getItens());
