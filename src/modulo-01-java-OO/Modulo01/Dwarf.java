@@ -3,12 +3,13 @@ public class Dwarf {
     private int vida, experiencia;
     private Status status;
     private DataTerceiraEra dataNascimento;
-    private Inventario inventario = new Inventario();
+    private Inventario inventario;
 
     public Dwarf() {
         this.vida = 110;
         this.status = Status.VIVO;
         this.dataNascimento = new DataTerceiraEra(1,1,1);
+        this.inventario = new Inventario();
     }
 
     public Dwarf(String nome) {
@@ -74,5 +75,25 @@ public class Dwarf {
         }
 
         return resultado;
+    }
+    
+    public void adicionarItem(Item item) {
+        this.inventario.adicionarItem(item);
+    }
+    
+    public void perderItem(Item item) {
+        this.inventario.perderItem(item);
+    }
+    
+    public Inventario getInventario() {
+        return this.inventario;
+    }
+    
+    public void tentarSorte() {
+        double numero = gerarNumero();
+        
+        if (numero == -3333.0) {
+            this.inventario.aumentar1000UnidadesEmCadaItem();
+        }
     }
 }

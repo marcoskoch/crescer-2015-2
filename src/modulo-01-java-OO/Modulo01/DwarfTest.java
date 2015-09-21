@@ -192,7 +192,7 @@ public class DwarfTest
         assertEquals(2, dwarf.getExperiencia());
         assertEquals(90, dwarf.getVida());   
     }
-    
+
     @Test
     public void dwarfReceberFlechadaComAnoNormalMeireles() {
         Dwarf meireles = new Dwarf("Meireles", new DataTerceiraEra(2, 3, 2015));
@@ -200,13 +200,45 @@ public class DwarfTest
         assertEquals(0, meireles.getExperiencia());
         assertEquals(110, meireles.getVida());
     }
-    
+
     @Test
     public void dwarfReceberFlechadaNormal(){
         Dwarf dwarf = new Dwarf();
         dwarf.receberFlechada();
         assertEquals(100, dwarf.getVida());
         assertEquals(0, dwarf.getExperiencia());
+    }
+
+    @Test
+    public void dwarfTentarSorteComSorte() {
+        Dwarf dwarf = new Dwarf("Leprechaun sortudo", new DataTerceiraEra(1, 1, 2000));
+        dwarf.receberFlechada();
+        dwarf.receberFlechada();
+        dwarf.adicionarItem(new Item(5, "Lança"));
+        dwarf.adicionarItem(new Item(25, "Poção"));
+        
+        Inventario esperado = new Inventario();
+        esperado.adicionarItem(new Item(1005, "Lança"));
+        esperado.adicionarItem(new Item(1025, "Poção"));
+        
+        dwarf.tentarSorte();
+        
+        assertEquals(esperado, dwarf.getInventario());
+    }
+
+    @Test
+    public void dwarfTentarSorteSemSorte() {
+        Dwarf dwarf = new Dwarf();
+        dwarf.adicionarItem(new Item(5, "Lança"));
+        dwarf.adicionarItem(new Item(25, "Poção"));
+        
+        Inventario esperado = new Inventario();
+        esperado.adicionarItem(new Item(5, "Lança"));
+        esperado.adicionarItem(new Item(25, "Poção"));
+        
+        dwarf.tentarSorte();
+        
+        assertEquals(esperado, dwarf.getInventario());
     }
 
 }
