@@ -1,45 +1,43 @@
-
 public class Personagem {
-      protected String nome;
-      protected Inventario inventario;
-      protected int vida, experiencia;
-      protected Status status;
+    protected String nome;
+    protected Status status;
+    protected int experiencia, vida;
+    protected Inventario inventario;
 
-      public Personagem(){
-          this.inventario = new Inventario();
-          this.status = Status.VIVO;
-      }
+    public Personagem() {
+        this.inventario = new Inventario();
+    }
 
-      public void adicionarItem(Item item) {
-          this.inventario.adicionarItem(item);
-      }
+    public Inventario getInventario() {
+        return this.inventario;
+    }
 
-      public void perderItem(Item item) {
-          this.inventario.perderItem(item);
-      }
+    public String getNome() {
+        return this.nome;
+    }
 
-      public Inventario getInventario() {
-          return this.inventario;
-      }
+    public Status getStatus() {
+        return this.status;
+    }
 
-      public void receberAtaqueDoOrc(Orc orc){
-          int danoCausado = orc.getDanoDeAtaque();
-          this.vida -= danoCausado;
-      }
+    public int getExperiencia() {
+        return this.experiencia;
+    }
 
-      public String getNome() {
-          return this.nome;
-      }
+    public int getVida() {
+        return this.vida;
+    }
 
-      public int getVida() {
-          return this.vida;
-      }
+    public void adicionarItem(Item item) {
+        inventario.adicionarItem(item);
+    }
 
-      public Status getStatus() {
-          return this.status;
-      }
+    public void perderItem(Item item) {
+        inventario.perderItem(item);
+    }
 
-      public int getExperiencia() {
-          return this.experiencia;
-      }
+    public void receberAtaqueDoOrc(Orc orc){
+        int dano = orc.getDanoDeAtaque();
+        this.vida -= dano;
+    }
 }

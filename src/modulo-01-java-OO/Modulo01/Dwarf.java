@@ -2,8 +2,8 @@ public class Dwarf extends Personagem {
     protected DataTerceiraEra dataNascimento;
 
     public Dwarf() {
-        super();
         this.vida = 110;
+        this.status = Status.VIVO;
         this.dataNascimento = new DataTerceiraEra(1,1,1);
     }
 
@@ -17,7 +17,7 @@ public class Dwarf extends Personagem {
         this.dataNascimento = dataNascimento;
     }
 
-    public void receberFlechada(int dano) {
+    public void receberFlechada() {
 
         double numero = this.gerarNumero();
 
@@ -25,26 +25,19 @@ public class Dwarf extends Personagem {
             this.experiencia += 2;
         } else if (numero > 100) {
 
-            int vidaAposFlechada = this.vida-dano;
-            if (vidaAposFlechada < 0){
-              vidaAposFlechada = 0;
-            }
+            int dano = 10, vidaAposFlechada = this.vida-dano;
             if (vidaAposFlechada == 0) {
                 this.status = Status.MORTO;
-            }
+            } 
 
             if (vida > 0) {
                 this.vida = vidaAposFlechada;
             }
         }
     }
-
+    
     public void atacarOrc(Orc orc){
         orc.levarAtaqueDeAnao();
-    }
-
-    public void receberFlechada(){
-      this.receberFlechada(10);
     }
 
     public DataTerceiraEra getDataNascimento() {
@@ -66,10 +59,10 @@ public class Dwarf extends Personagem {
 
         return resultado;
     }
-
+    
     public void tentarSorte() {
         double numero = gerarNumero();
-
+        
         if (numero == -3333.0) {
             this.inventario.aumentar1000UnidadesEmCadaItem();
         }

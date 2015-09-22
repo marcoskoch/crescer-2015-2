@@ -2,7 +2,7 @@
  * Representa objetos do tipo Elfo.
  */
 public class Elfo extends Personagem {
-    protected int flechas;
+    private int flechas;
 
     /* Type initializer
      * Executa antes de cada construtor
@@ -11,9 +11,9 @@ public class Elfo extends Personagem {
     }
      */
     public Elfo(String nome, int flechas) {
-        super();
         this.nome = nome;
         this.flechas = flechas;
+        this.status = Status.VIVO;
         this.vida = 80;
     }
 
@@ -40,13 +40,13 @@ public class Elfo extends Personagem {
         flechas--;
         experiencia++;
         dwarf.receberFlechada();
+        //experiencia += 1;
+        //experiencia = experiencia + 1;
     }
-
 
     public void atacarOrc(Orc orc){
         orc.levarAtaqueDeElfo();
     }
-
 
     /*
      * ANTES:
@@ -75,7 +75,7 @@ public class Elfo extends Personagem {
         return this.flechas;
     }
 
-    /*
+    /* 
     public void setFlechas(int flechas) {
     if (flechas > this.flechas)
     this.flechas = flechas;
@@ -100,5 +100,4 @@ public class Elfo extends Personagem {
             this.experiencia,
             nivelNoSingular ? "nível" : "níveis");
     }
-
 }
