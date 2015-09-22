@@ -15,6 +15,16 @@ public class Inventario {
         return this.itens;
     }
     
+    public Item getItemPorDescricao(String descricao){
+        for(Item item : this.itens){
+            if(item.getDescricao().equals(descricao)) {
+                return item;
+            }
+        }
+        
+        return null;
+    }
+    
     public String getDescricoesItens() {
         String descricoes = "";
         

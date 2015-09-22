@@ -43,4 +43,12 @@ public class ItemTest
         
         assertEquals(15005, espada.getQuantidade());
     }
+    
+    @Test
+    public void debitarUmaUnidadeDoItem(){
+        Item flechas = new Item(3, "Flecha");
+        flechas.debitarUmaUnidade();
+        
+        assertEquals(2, flechas.getQuantidade());
+    }
 }

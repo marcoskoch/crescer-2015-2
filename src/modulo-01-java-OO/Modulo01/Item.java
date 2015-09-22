@@ -22,8 +22,10 @@ public class Item
         return this.quantidade;
     }
     
-    public void setQuantidade(int quantidade) {
-        this.quantidade = quantidade;
+    public void debitarUmaUnidade(){
+        if(this.quantidade > 0){
+            this.quantidade--;
+        }
     }
 
     public void aumentar1000Unidades() {
