@@ -5,6 +5,7 @@ public class Elfo {
     private String nome;
     private int flechas, experiencia, vida;
     private Status status;
+    private Inventario inventario;
 
     /* Type initializer
      * Executa antes de cada construtor
@@ -17,6 +18,7 @@ public class Elfo {
         this.flechas = flechas;
         this.status = Status.VIVO;
         this.vida = 80;
+        this.inventario = new Inventario();
     }
 
     /* Apenas para elucidar as diferenças entre int X Integer, esta duplicação não faz sentido.
@@ -50,15 +52,15 @@ public class Elfo {
         int dano = orc.getDanoDeAtaque();
         this.vida -= dano;
     }
-    
+
     public void atacarOrc(Orc orc){
         orc.levarAtaqueDeElfo();
     }
-    
+
     public int getVida(){
         return this.vida;
     }
-    
+
     /*
      * ANTES:
      * public atirarFlechaRefactory(this.flechas, this.experiencia){
@@ -93,12 +95,12 @@ public class Elfo {
     public int getExperiencia() {
         return this.experiencia;
     }
-    
+
     public Status getStatus() {
         return this.status;
     }
 
-    /* 
+    /*
     public void setFlechas(int flechas) {
     if (flechas > this.flechas)
     this.flechas = flechas;
@@ -109,18 +111,30 @@ public class Elfo {
 
         boolean flechaNoSingular = Math.abs(this.flechas) == 1;
         boolean nivelNoSingular = Math.abs(this.experiencia) == 1;
-        
+
         // Ruby ou CoffeeScript:
         //"#{nome} possui #{flechas} #{textoFlechas} e #{experiencia} #{textoNiveis} de experiência."
-        
+
         // C# 6:
         //"\{nome} possui \{flechas} \{textoFlechas} e \{experiencia} \{textoNiveis} de experiência."
-        
+
         return String.format("%s possui %d %s e %d %s de experiência.",
             this.nome,
             this.flechas,
             flechaNoSingular ? "flecha" : "flechas",
             this.experiencia,
             nivelNoSingular ? "nível" : "níveis");
+    }
+
+    public void adicionarItem(Item item) {
+        this.inventario.adicionarItem(item);
+    }
+
+    public void perderItem(Item item) {
+        this.inventario.perderItem(item);
+    }
+
+    public Inventario getInventario() {
+        return this.inventario;
     }
 }
