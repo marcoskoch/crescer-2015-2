@@ -1,11 +1,8 @@
 /**
  * Representa objetos do tipo Elfo.
  */
-public class Elfo {
-    private String nome;
-    private int flechas, experiencia, vida;
-    private Status status;
-    private Inventario inventario;
+public class Elfo extends Personagem {
+    private int flechas;
 
     /* Type initializer
      * Executa antes de cada construtor
@@ -14,11 +11,10 @@ public class Elfo {
     }
      */
     public Elfo(String nome, int flechas) {
+        super();
         this.nome = nome;
         this.flechas = flechas;
-        this.status = Status.VIVO;
         this.vida = 80;
-        this.inventario = new Inventario();
     }
 
     /* Apenas para elucidar as diferenças entre int X Integer, esta duplicação não faz sentido.
@@ -44,22 +40,13 @@ public class Elfo {
         flechas--;
         experiencia++;
         dwarf.receberFlechada();
-        //experiencia += 1;
-        //experiencia = experiencia + 1;
     }
 
-    public void receberAtaqueDoOrc(Orc orc){
-        int dano = orc.getDanoDeAtaque();
-        this.vida -= dano;
-    }
 
     public void atacarOrc(Orc orc){
         orc.levarAtaqueDeElfo();
     }
 
-    public int getVida(){
-        return this.vida;
-    }
 
     /*
      * ANTES:
@@ -84,20 +71,8 @@ public class Elfo {
 
      */
 
-    public String getNome() {
-        return nome;
-    }
-
     public int getFlechas() {
         return this.flechas;
-    }
-
-    public int getExperiencia() {
-        return this.experiencia;
-    }
-
-    public Status getStatus() {
-        return this.status;
     }
 
     /*
