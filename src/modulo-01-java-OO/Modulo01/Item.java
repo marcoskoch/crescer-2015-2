@@ -21,6 +21,10 @@ public class Item
     public int getQuantidade() {
         return this.quantidade;
     }
+    
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
+    }
 
     public void aumentar1000Unidades() {
         this.quantidade += 1000;
