@@ -87,7 +87,6 @@ public class Orc
                 break;
             } else if (item.getDescricao().equals("Arco")){
                 temArco = true;
-                break;
             }
         }
 
@@ -117,7 +116,6 @@ public class Orc
               break;
           } else if (item.getDescricao().equals("Arco")){
               temArco = true;
-              break;
           }
       }
 
