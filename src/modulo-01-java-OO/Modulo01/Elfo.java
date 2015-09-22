@@ -2,7 +2,7 @@
  * Representa objetos do tipo Elfo.
  */
 public class Elfo extends Personagem {
-    private int flechas;
+    protected int flechas;
 
     /* Type initializer
      * Executa antes de cada construtor
@@ -101,15 +101,4 @@ public class Elfo extends Personagem {
             nivelNoSingular ? "nível" : "níveis");
     }
 
-    public void adicionarItem(Item item) {
-        this.inventario.adicionarItem(item);
-    }
-
-    public void perderItem(Item item) {
-        this.inventario.perderItem(item);
-    }
-
-    public Inventario getInventario() {
-        return this.inventario;
-    }
 }
