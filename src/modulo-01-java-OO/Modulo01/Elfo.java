@@ -4,6 +4,7 @@
 public class Elfo {
     private String nome;
     private int flechas, experiencia;
+    private int vida;
     private Status status;
 
     /* Type initializer
@@ -16,6 +17,7 @@ public class Elfo {
         this.nome = nome;
         this.flechas = flechas;
         this.status = Status.VIVO;
+        this.vida = 80;
     }
 
     /* Apenas para elucidar as diferenças entre int X Integer, esta duplicação não faz sentido.
@@ -43,6 +45,12 @@ public class Elfo {
         dwarf.receberFlechada();
         //experiencia += 1;
         //experiencia = experiencia + 1;
+    }
+
+    public void atirarFlechaOrc(Orc orc){
+        flechas--;
+        experiencia++;
+        orc.receberFlechadaElfo();
     }
 
     /*
@@ -79,12 +87,16 @@ public class Elfo {
     public int getExperiencia() {
         return this.experiencia;
     }
-    
+
     public Status getStatus() {
         return this.status;
     }
 
-    /* 
+    public void receberAtaqueOrc(int dano){
+      this.vida -= dano;
+    }
+
+    /*
     public void setFlechas(int flechas) {
     if (flechas > this.flechas)
     this.flechas = flechas;
@@ -95,13 +107,13 @@ public class Elfo {
 
         boolean flechaNoSingular = Math.abs(this.flechas) == 1;
         boolean nivelNoSingular = Math.abs(this.experiencia) == 1;
-        
+
         // Ruby ou CoffeeScript:
         //"#{nome} possui #{flechas} #{textoFlechas} e #{experiencia} #{textoNiveis} de experiência."
-        
+
         // C# 6:
         //"\{nome} possui \{flechas} \{textoFlechas} e \{experiencia} \{textoNiveis} de experiência."
-        
+
         return String.format("%s possui %d %s e %d %s de experiência.",
             this.nome,
             this.flechas,

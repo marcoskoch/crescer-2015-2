@@ -22,7 +22,7 @@ public class Dwarf {
         this.dataNascimento = dataNascimento;
     }
 
-    public void receberFlechada() {
+    public void receberFlechada(int dano) {
 
         double numero = this.gerarNumero();
 
@@ -30,15 +30,22 @@ public class Dwarf {
             this.experiencia += 2;
         } else if (numero > 100) {
 
-            int dano = 10, vidaAposFlechada = this.vida-dano;
+            int vidaAposFlechada = this.vida-dano;
+            if (vidaAposFlechada < 0){
+              vidaAposFlechada = 0;
+            }
             if (vidaAposFlechada == 0) {
                 this.status = Status.MORTO;
-            } 
+            }
 
             if (vida > 0) {
                 this.vida = vidaAposFlechada;
             }
         }
+    }
+
+    public void receberFlechada(){
+      this.receberFlechada(10);
     }
 
     public int getVida() {
@@ -76,22 +83,22 @@ public class Dwarf {
 
         return resultado;
     }
-    
+
     public void adicionarItem(Item item) {
         this.inventario.adicionarItem(item);
     }
-    
+
     public void perderItem(Item item) {
         this.inventario.perderItem(item);
     }
-    
+
     public Inventario getInventario() {
         return this.inventario;
     }
-    
+
     public void tentarSorte() {
         double numero = gerarNumero();
-        
+
         if (numero == -3333.0) {
             this.inventario.aumentar1000UnidadesEmCadaItem();
         }
