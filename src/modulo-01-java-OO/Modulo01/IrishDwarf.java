@@ -1,8 +1,7 @@
 public class IrishDwarf extends Dwarf {
 
-
     public IrishDwarf() {
-        super();
+        // vai chamar o super(); implícitamente
     }
 
     public IrishDwarf(String nome) {
@@ -12,10 +11,13 @@ public class IrishDwarf extends Dwarf {
     public IrishDwarf(String nome, DataTerceiraEra dataNascimento) {
         super(nome, dataNascimento);
     }
-
     
-    
+    @Override
     public void tentarSorte() {
+        
+        // poderia chamar método da super classe
+        //super.tentarSorte();
+        
         double numero = gerarNumero();
         
         if (numero == -3333.0) {
