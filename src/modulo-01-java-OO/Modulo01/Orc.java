@@ -1,32 +1,14 @@
 
 public class Orc
 {
-    private int vida;
-    private Inventario inventario;
-    private Status status;
-    private String tipo;
+    protected int vida;
+    protected Inventario inventario;
+    protected Status status;
 
     public Orc() {
         this.vida = 100;
         this.inventario = new Inventario();
         this.status = Status.VIVO;
-    }
-
-    public Orc(String tipo){
-        this();
-        if (tipo.equals("Uruk-Hai")) {
-          this.tipo = tipo;
-          this.vida = 150;
-          this.inventario.adicionarItem(new Item(1, "Espada"));
-          this.inventario.adicionarItem(new Item(1, "Escudo Uruk-Hai"));
-        } else if (tipo.equals("Snaga")) {
-          this.tipo = tipo;
-          this.vida = 70;
-          this.inventario.adicionarItem(new Item(1, "Arco"));
-          this.inventario.adicionarItem(new Item(5, "Flecha"));
-        } else {
-          this.tipo = tipo;
-        }
     }
 
     public void adicionarItem(Item item) {
