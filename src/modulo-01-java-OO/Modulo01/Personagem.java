@@ -5,6 +5,7 @@ public class Personagem {
     protected Inventario inventario;
 
     public Personagem() {
+        this.status = Status.VIVO;
         this.inventario = new Inventario();
     }
 
