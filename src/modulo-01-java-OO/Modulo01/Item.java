@@ -2,6 +2,11 @@ public class Item
 {
     private final String descricao;
     private int quantidade;
+    
+    // C#
+    // public int Quantidade { get; protected set; }
+    // new Item().Quantidade
+    // item.Quantidade = 14;
 
     /**
      * Cria um item de inventário com a quantidade e descrição informadas
