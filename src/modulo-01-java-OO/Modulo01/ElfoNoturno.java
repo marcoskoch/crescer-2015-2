@@ -1,29 +1,26 @@
-
-public class ElfoNoturno extends Elfo {
-
-
-    public ElfoNoturno(String nome, int flechas) {
-        super(nome, flechas);
-    }
-
+public class ElfoNoturno extends Elfo
+{   
     public ElfoNoturno(String nome) {
         super(nome);
     }
-
+    
+    /**
+     * Atira a flecha em um orc, ganhando o triplo de experiência e perdendo 5% da vida atual.
+     * 
+     * @param Orc orc que receberá a flechada.
+     */
     public void atirarFlecha(Dwarf dwarf) {
         super.atirarFlecha(dwarf);
         this.experiencia += 2;
-        double novaVida = this.vida * 0.95;
-        this.vida = (int) novaVida;
-        super.verificaStatus();
+        double qtdVidaAPerder = this.vida * 0.05;
+        //double qtdVidaAPerder = this.vida * 5/100;
+        this.vida -= qtdVidaAPerder;
+        this.status = (int)this.vida == 0 ? 
+            Status.MORTO : this.status;
+    }   
+    
+    @Override
+    public String toString() {
+        return "Elfo Noturno: " + super.toString();
     }
-
-    public void atacarOrc(Orc orc){
-        orc.levarAtaque();
-        this.experiencia += 2;
-        double novaVida = this.vida * 0.95;
-        this.vida = (int) novaVida;
-        super.verificaStatus();
-    }
-
 }

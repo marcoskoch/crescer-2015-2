@@ -3,7 +3,6 @@
  */
 public class Elfo extends Personagem {
     private int flechas;
-    public static int contador = 0;
 
     /* Type initializer
      * Executa antes de cada construtor
@@ -16,7 +15,6 @@ public class Elfo extends Personagem {
         this.flechas = flechas;
         this.status = Status.VIVO;
         this.vida = 100;
-        this.contador += 1;
     }
 
     /* Apenas para elucidar as diferenças entre int X Integer, esta duplicação não faz sentido.
@@ -77,11 +75,7 @@ public class Elfo extends Personagem {
         return this.flechas;
     }
 
-    public static void zerarContador(){
-        Elfo.contador = 0;
-    }
-
-    /*
+    /* 
     public void setFlechas(int flechas) {
     if (flechas > this.flechas)
     this.flechas = flechas;
