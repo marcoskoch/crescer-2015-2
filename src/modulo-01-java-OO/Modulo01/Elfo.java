@@ -3,6 +3,7 @@
  */
 public class Elfo extends Personagem {
     private int flechas;
+    private static int CONTADOR_ELFOS;
 
     /* Type initializer
      * Executa antes de cada construtor
@@ -15,7 +16,7 @@ public class Elfo extends Personagem {
         this.flechas = flechas;
         this.status = Status.VIVO;
         this.vida = 100;
-        NossoJogo.CONTADOR_ELFOS++;
+        this.CONTADOR_ELFOS++;
     }
 
     /* Apenas para elucidar as diferenças entre int X Integer, esta duplicação não faz sentido.
