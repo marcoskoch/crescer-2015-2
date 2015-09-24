@@ -16,18 +16,18 @@ public class ElfoTest
         Elfo elrond = new Elfo(null);
         assertNull(elrond.getNome());
     }
-    
+
     @Test
     public void elfoNasceVivo() {
         Elfo legolas = new Elfo("Legolas");
         assertEquals(Status.VIVO, legolas.getStatus());
     }
-    
+
     @Test
     public void elfoNasceCom100DeVida() {
         assertEquals(100.0, new Elfo("Legolas").getVida(), 0.0);
     }
-    
+
     @Test
     public void elfoNasceComInventarioVazio() {
         Elfo legolas = new Elfo("Legolas");
@@ -130,17 +130,17 @@ public class ElfoTest
     public void elfoComNomeEFlechasInformadasToString() {
         Elfo elfo1 = new Elfo("Acabaram os nomes", 1000);
         String textoEsperado = "Acabaram os nomes possui 1000 flechas e 0 níveis de experiência.";
-        
+
         assertEquals(textoEsperado, elfo1.toString());
     }
-    
+
     @Test
     public void elfoComUmaFlechaInformadaToString() {
         Elfo elfo1 = new Elfo("Monoflecha", 1);
         String textoEsperado = "Monoflecha possui 1 flecha e 0 níveis de experiência.";
         assertEquals(textoEsperado, elfo1.toString());
     }
-    
+
     @Test
     public void elfoComUmDeExperienciaToString() {
         Elfo elfo1 = new Elfo(null);
@@ -148,29 +148,54 @@ public class ElfoTest
         String textoEsperado = "null possui 41 flechas e 1 nível de experiência.";
         assertEquals(textoEsperado, elfo1.toString());
     }
-    
+
     @Test
     public void elfoRecebeEspadadaDoOrcUrukHai(){
         Orc orc = new UrukHai();
         Elfo elfo = new Elfo(null);
-        
+
         orc.atacar(elfo);
-        
+
         assertEquals(88, elfo.getVida(), 0.0);
     }
-    
+
     @Test
     public void elfoRecebeFlechadaDoOrcSnaga(){
         Orc orc = new Snaga();
         Elfo elfo = new Elfo(null);
-        
+
         orc.atacar(elfo);
-        
+
         assertEquals(92, elfo.getVida(), 0.0);
     }
+
+    @Test
+    public void quandoCriaUmElfoIncrementaQuantidadeDeCriados() {
+        int esperado = 1;
+        new Elfo("Qualquer");
+        assertEquals(esperado, Elfo.getQtdElfosCriados());
+    }
+
+    @Test
+    public void quandoCriaMuitosElfos() {
+        // ArrayList<Elfo> fixture = MontadorDeCenario.meVeAi5ElfosVerdes();
+        
+        int esperado = 100;
+        for (int i = 0; i < 100; i++) {
+            new Elfo("Qualquer: " + i);
+        }
+        assertEquals(esperado, Elfo.getQtdElfosCriados());
+    }
     
+    @Before
+    public void setUp() {
+        Elfo.resetaContador();
+    }
     
-    
-    
-    
+    /*
+    @After
+    public void tearDown() {
+        Elfo.resetaContador();
+    }
+    */
 }
