@@ -16,13 +16,13 @@ public class ElfoTest
         Elfo elrond = new Elfo(null);
         assertNull(elrond.getNome());
     }
-    
+
     @Test
     public void elfoNasceVivo() {
         Elfo legolas = new Elfo("Legolas");
         assertEquals(Status.VIVO, legolas.getStatus());
     }
-    
+
     @Test
     public void elfoNasceComInventarioVazio() {
         Elfo legolas = new Elfo("Legolas");
@@ -125,17 +125,17 @@ public class ElfoTest
     public void elfoComNomeEFlechasInformadasToString() {
         Elfo elfo1 = new Elfo("Acabaram os nomes", 1000);
         String textoEsperado = "Acabaram os nomes possui 1000 flechas e 0 níveis de experiência.";
-        
+
         assertEquals(textoEsperado, elfo1.toString());
     }
-    
+
     @Test
     public void elfoComUmaFlechaInformadaToString() {
         Elfo elfo1 = new Elfo("Monoflecha", 1);
         String textoEsperado = "Monoflecha possui 1 flecha e 0 níveis de experiência.";
         assertEquals(textoEsperado, elfo1.toString());
     }
-    
+
     @Test
     public void elfoComUmDeExperienciaToString() {
         Elfo elfo1 = new Elfo(null);
@@ -143,29 +143,40 @@ public class ElfoTest
         String textoEsperado = "null possui 41 flechas e 1 nível de experiência.";
         assertEquals(textoEsperado, elfo1.toString());
     }
-    
+
     @Test
     public void elfoRecebeEspadadaDoOrcUrukHai(){
         Orc orc = new UrukHai();
         Elfo elfo = new Elfo(null);
-        
+
         orc.atacar(elfo);
-        
+
         assertEquals(88, elfo.getVida());
     }
-    
+
     @Test
     public void elfoRecebeFlechadaDoOrcSnaga(){
         Orc orc = new Snaga();
         Elfo elfo = new Elfo(null);
-        
+
         orc.atacar(elfo);
-        
+
         assertEquals(92, elfo.getVida());
     }
-    
-    
-    
-    
-    
+
+    @Test
+    public void elfoContatorCom7ElfosInstanciados () {
+        Elfo.zerarContador();
+        Elfo elfo1 = new Elfo("");
+        Elfo elfo2 = new Elfo("");
+        Elfo elfo3 = new Elfo("");
+        Elfo elfo4 = new Elfo("");
+        Elfo elfo5 = new Elfo("");
+        Elfo elfo6 = new Elfo("");
+        Elfo elfo7 = new Elfo("");
+        assertEquals(7, Elfo.contador);      
+    }
+
+
+
 }

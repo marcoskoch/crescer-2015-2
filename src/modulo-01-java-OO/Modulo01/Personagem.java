@@ -1,6 +1,6 @@
 // public sealed class Personagem {
 // public final class Personagem {
-public class Personagem {
+public abstract class Personagem {
     protected String nome;
     protected Status status;
     protected int experiencia, vida;
@@ -43,7 +43,7 @@ public class Personagem {
         int dano = orc.getDanoDeAtaque();
         this.vida -= dano;
     }
-    
+
     public void verificaStatus(){
         if(vida==0){
             this.status = Status.MORTO;
