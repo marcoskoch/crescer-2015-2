@@ -111,4 +111,7 @@ public class Elfo extends Personagem {
             this.experiencia,
             nivelNoSingular ? "nível" : "níveis");
     }
+    
+    public void tentarSorte() {
+    }
 }
