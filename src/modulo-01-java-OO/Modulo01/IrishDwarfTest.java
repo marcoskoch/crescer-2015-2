@@ -8,7 +8,7 @@ public class IrishDwarfTest
     @Test
     public void irishDwarfNasceCom110DeVida() {
         IrishDwarf gimli = new IrishDwarf();
-        assertEquals(110, gimli.getVida());
+        assertEquals(110, gimli.getVida(), 0.0);
     }
 
     @Test
@@ -54,7 +54,7 @@ public class IrishDwarfTest
         // Act
         gimli.receberFlechada();
         // Assert
-        assertEquals(vidaEsperada, gimli.getVida());
+        assertEquals(vidaEsperada, gimli.getVida(), 0.0);
     }
 
     @Test
@@ -74,7 +74,7 @@ public class IrishDwarfTest
         gimli.receberFlechada();
         gimli.receberFlechada();
         // Assert
-        assertEquals(vidaEsperada, gimli.getVida());
+        assertEquals(vidaEsperada, gimli.getVida(), 0.0);
     }
 
     @Test
@@ -90,7 +90,7 @@ public class IrishDwarfTest
         gimli.receberFlechada();
         gimli.receberFlechada();
         // Assert
-        assertEquals(vidaEsperada, gimli.getVida());
+        assertEquals(vidaEsperada, gimli.getVida(), 0.0);
     }
 
     @Test
@@ -144,7 +144,7 @@ public class IrishDwarfTest
         gimli.receberFlechada();
         gimli.receberFlechada();
         // Assert
-        assertEquals(0, gimli.getVida());
+        assertEquals(0, gimli.getVida(), 0.0);
     }
 
     @Test
@@ -190,7 +190,7 @@ public class IrishDwarfTest
         IrishDwarf.receberFlechada();
         // Assert
         assertEquals(2, IrishDwarf.getExperiencia());
-        assertEquals(90, IrishDwarf.getVida());
+        assertEquals(90, IrishDwarf.getVida(), 0.0);
     }
 
     @Test
@@ -198,14 +198,14 @@ public class IrishDwarfTest
         IrishDwarf meireles = new IrishDwarf("Meireles", new DataTerceiraEra(2, 3, 2015));
         meireles.receberFlechada();
         assertEquals(0, meireles.getExperiencia());
-        assertEquals(110, meireles.getVida());
+        assertEquals(110, meireles.getVida(), 0.0);
     }
 
     @Test
     public void irishDwarfReceberFlechadaNormal(){
         IrishDwarf IrishDwarf = new IrishDwarf();
         IrishDwarf.receberFlechada();
-        assertEquals(100, IrishDwarf.getVida());
+        assertEquals(100, IrishDwarf.getVida(), 0.0);
         assertEquals(0, IrishDwarf.getExperiencia());
     }
     
