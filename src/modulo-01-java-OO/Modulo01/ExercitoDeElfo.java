@@ -1,9 +1,8 @@
-import java.util.HashMap;
-import java.util.ArrayList;
-
+import java.util.*;
 
 public class ExercitoDeElfo {
     private HashMap <String, Elfo> exercito;
+    private HashMap<Status, ArrayList<Elfo>> elfosAgrupadosPorStatus = new HashMap<>();
 
     public ExercitoDeElfo (){
         this.exercito = new HashMap<>();
@@ -15,8 +14,22 @@ public class ExercitoDeElfo {
       }
     }
 
+    public void agruparPorStatus(){
+        
+        for (Elfo elfo : this.exercito.values() ) {
+            if (!this.elfosAgrupadosPorStatus.containsKey(elfo.getStatus())) {
+                elfosAgrupadosPorStatus.put(elfo.getStatus(), new ArrayList <Elfo> () );
+            }
+            elfosAgrupadosPorStatus.get(elfo.getStatus()).add(elfo);
+        }
+    }
+
     public Elfo getElfoNoExercitoPorNome(String nome) {
         return this.exercito.get(nome);
+    }
+
+    public HashMap getElfosAgrupadosPorStatus() {
+        return this.elfosAgrupadosPorStatus;
     }
 
     public HashMap getExercito(){

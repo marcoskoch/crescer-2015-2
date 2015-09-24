@@ -49,5 +49,28 @@ public class ExercitoDeElfoTest {
 
         assertEquals(elfo, exercito.getElfoNoExercitoPorNome("Blade"));
     }
+/*
+    @Test
+    public void exercitoAgrupadoPorStatus(){
+        ExercitoDeElfo exercito = new ExercitoDeElfo();
+        ElfoNoturno elfo = new ElfoNoturno("Blade");
+        ElfoVerde elfo2 = new ElfoVerde("Lanterna Verde");
+        Dwarf balin = new Dwarf();
+        exercito.alistarUmElfo(elfo);
+        exercito.alistarUmElfo(elfo2);
 
+
+        for(int i = 0; i < 45; i++){
+            exercito.getElfoNoExercitoPorNome("Blade").atirarFlecha(balin);
+        }
+
+        exercito.agruparPorStatus();
+        HashMap <Status, Elfo> exercitoAgrupado = exercito.getElfosAgrupadosPorStatus();
+        HashMap <Status,Elfo> exercitoEsperado = new HashMap<>();
+        exercitoEsperado.put(Status.MORTO, elfo);
+        exercitoEsperado.put(Status.VIVO, elfo2);
+        
+        assertEquals(exercitoEsperado, exercitoAgrupado);
+    }
+*/
 }
