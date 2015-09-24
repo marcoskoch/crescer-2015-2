@@ -43,4 +43,10 @@ public class Personagem {
         int dano = orc.getDanoDeAtaque();
         this.vida -= dano;
     }
+    
+    public void verificaStatus(){
+        if(vida==0){
+            this.status = Status.MORTO;
+        }
+    }
 }

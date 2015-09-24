@@ -23,25 +23,21 @@ public class ElfoNoturnoTest {
         assertEquals(experienciaEsperada, elfo.getExperiencia());
         assertEquals(vidaEsperadaElfo, elfo.getVida());
     }
-    /*
+
     @Test
-    public void elfoNoturnoAtiraFlechaEmDwarf() {
+    public void elfoNoturnoAtiraMuitasFlechasEMorre() {
         // Arrange
         ElfoNoturno elfo = new ElfoNoturno("Elfo caçador");
         Dwarf balin = new Dwarf();
-        int qtdFlechasEsperada = 39;
-        int experienciaEsperada = 9;
-        int vidaEsperadaElfo = 85;
+        int vidaEsperadaElfo = 0;
         // Act
         for(int i = 0; i < 45; i++){
             elfo.atirarFlecha(balin);
         }
-        int vidaElfo = elfo.getVida();
         // Assert
-        assertEquals(qtdFlechasEsperada, elfo.getFlechas());
-        assertEquals(experienciaEsperada, elfo.getExperiencia());
         assertEquals(vidaEsperadaElfo, elfo.getVida());
+        assertEquals(Status.MORTO, elfo.getStatus());
     }
-    */
+
 
 }
