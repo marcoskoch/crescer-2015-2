@@ -15,6 +15,10 @@ public class ExercitoDeElfo {
       }
     }
 
+    public Elfo getElfoNoExercitoPorNome(String nome) {
+        return this.exercito.get(nome);
+    }
+
     public HashMap getExercito(){
         return exercito;
     }

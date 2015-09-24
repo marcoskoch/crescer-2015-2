@@ -39,6 +39,15 @@ public class ExercitoDeElfoTest {
         assertEquals(exercitoEsperado, exercito.getExercito());
     }
 
+    @Test
+    public void buscaElfoNoExercitoPorNome(){
+        ExercitoDeElfo exercito = new ExercitoDeElfo();
+        ElfoNoturno elfo = new ElfoNoturno("Blade");
+        ElfoVerde elfo2 = new ElfoVerde("Lanterna Verde");
+        exercito.alistarUmElfo(elfo);
+        exercito.alistarUmElfo(elfo2);
 
+        assertEquals(elfo, exercito.getElfoNoExercitoPorNome("Blade"));
+    }
 
 }
