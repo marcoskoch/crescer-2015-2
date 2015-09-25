@@ -37,7 +37,7 @@ public class EstrategiaNormalTest {
                 Arrays.asList(d1, d2)
             );
         Elfo soldado1 = new ElfoVerde("Green Elf 1");
-        Elfo soldado2 = new ElfoNoturno("Green Elf 2");
+        Elfo soldado2 = new ElfoVerde("Green Elf 2");
         Elfo soldado3 = new ElfoVerde("Green Elf 3");
         ExercitoDeElfos exercito = new ExercitoDeElfos();
         double vidaEsperada = 80;
@@ -64,7 +64,7 @@ public class EstrategiaNormalTest {
                 Arrays.asList(d1, d2)
             );
         Elfo soldado1 = new ElfoVerde("Green Elf 1");
-        Elfo soldado2 = new ElfoNoturno("Green Elf 2");
+        Elfo soldado2 = new ElfoVerde("Green Elf 2");
         Elfo soldado3 = new ElfoVerde("Green Elf 3");
         ArrayList<Elfo> esperado = new ArrayList<Elfo>(Arrays.asList(soldado3, soldado2, soldado1));
         ExercitoDeElfos exercito = new ExercitoDeElfos();
