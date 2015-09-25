@@ -3,7 +3,7 @@
  */
 public class Elfo extends Personagem {
     private int flechas;
-    private static int qtdElfosCriados;   
+    private static int qtdElfosCriados;
 
     /* Type initializer
      * Executa antes de cada construtor
@@ -42,8 +42,6 @@ public class Elfo extends Personagem {
         flechas--;
         experiencia++;
         dwarf.receberFlechada();
-        //experiencia += 1;
-        //experiencia = experiencia + 1;
     }
 
     public void atacarOrc(Orc orc){
@@ -76,17 +74,17 @@ public class Elfo extends Personagem {
     public int getFlechas() {
         return this.flechas;
     }
-    
+
     public static int getQtdElfosCriados() {
         // return Elfo.qtdElfosCriados;
         return qtdElfosCriados;
     }
-    
+
     public static void resetaContador() {
         qtdElfosCriados = 0;
     }
 
-    /* 
+    /*
     public void setFlechas(int flechas) {
     if (flechas > this.flechas)
     this.flechas = flechas;
@@ -111,7 +109,7 @@ public class Elfo extends Personagem {
             this.experiencia,
             nivelNoSingular ? "nível" : "níveis");
     }
-    
+
     public void tentarSorte() {
     }
 }
