@@ -57,7 +57,7 @@ public class EstrategiaAntiNoturnosTest {
         Elfo noturno1 = new ElfoNoturno("Night Elf1");
         Elfo noturno2 = new ElfoNoturno("Night Elf2");
         Elfo noturno3 = new ElfoNoturno("Night Elf3");
-        for (int i = 0; i<900; i++) {
+        for (int i = 0; i<90; i++) {
             noturno3.atirarFlecha(new Dwarf());
         }
         Elfo verde1 = new ElfoVerde("Green 1");
