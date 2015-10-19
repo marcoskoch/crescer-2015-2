@@ -55,3 +55,14 @@ function fiboSum(n){
   };
   return result;
 }
+
+// Exercício 5
+
+function excelis(idx){
+  var numeroColuna = 0;
+  for (var i = 0; i < idx.length; i++) {
+    numeroColuna = numeroColuna * 26 + (idx.charCodeAt(i) - 64) ;
+  };
+
+  return numeroColuna;
+}
