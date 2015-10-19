@@ -38,3 +38,20 @@ function imprime(instrutores, funcao){
 
 // Exercício 4
 
+function fiboSum(n){
+  var a = 1;
+  var b = 1;
+  var result;
+  for (var i = 0; i < n; i++) {
+      if (i === 0) {
+        fibo = a;
+        result = fibo;
+      } else{
+        result += b;
+        fibo = a + b;
+        a = b;
+        b = fibo;
+      };
+  };
+  return result;
+}
