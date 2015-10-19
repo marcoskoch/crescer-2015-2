@@ -66,3 +66,15 @@ function excelis(idx){
 
   return numeroColuna;
 }
+
+// Exercício 6
+
+function queroCafe(mascada, precos){
+  var precosOrdenados = new Array();
+  for (var i in precos) {
+    if (precos[i] <= mascada) {
+      precosOrdenados.push(precos[i]);
+    };
+  }
+  return precosOrdenados.sort();
+}
