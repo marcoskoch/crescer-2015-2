@@ -76,5 +76,5 @@ function queroCafe(mascada, precos){
       precosOrdenados.push(precos[i]);
     };
   }
-  return precosOrdenados.sort();
+  return precosOrdenados.sort().join(', ');
 }
