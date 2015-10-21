@@ -28,7 +28,7 @@ CarrinhoDeCompras.prototype.calcularSubTotalCarrinho = function(){
 };
 
 CarrinhoDeCompras.prototype.tentarSorte = function(){
-  return Math.floor(Math.random() * (6 - 1) + 1);
+  return Math.floor(Math.random() * (5) + 1);
 };
 
 carrinho = new CarrinhoDeCompras();
