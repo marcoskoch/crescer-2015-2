@@ -103,3 +103,40 @@
   console.assert(carrinho5.itens[1].quantidade === 5, 'test05');
   console.log(carrinho5);
 })();
+
+
+carrinho6 = new CarrinhoDeComprasChantagista();
+
+item1 = new Item({
+                  sku: '654', 
+                  descricao: 'bone', 
+                  quantidade: 1, 
+                  valorUnitario: 20
+                });
+item2 = new Item({
+                  sku: '156', 
+                  descricao: 'calca', 
+                  quantidade: 1, 
+                  valorUnitario: 150
+                });
+item3 = new Item({
+                  sku: '250', 
+                  descricao: 'tenis', 
+                  quantidade: 1, 
+                  valorUnitario: 250
+                });
+item4 = new Item({
+                  sku: '685', 
+                  descricao: 'meia', 
+                  quantidade: 5, 
+                  valorUnitario: 29
+                });
+
+carrinho6.adicionar(item1);
+carrinho6.adicionar(item2);
+carrinho6.adicionar(item3);
+carrinho6.adicionar(item4);
+
+
+carrinho6.remover('654');
+carrinho6.atualizarQuantidade('156', 2);
