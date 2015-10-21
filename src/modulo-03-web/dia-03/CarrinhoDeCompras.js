@@ -31,18 +31,16 @@ CarrinhoDeCompras.prototype.tentarSorte = function(){
   return Math.floor(Math.random() * (5) + 1);
 };
 
-carrinho = new CarrinhoDeCompras();
+CarrinhoDeCompras.prototype.forcarCompra = function(){
+    var self = this;
+    this.intervalo = setInterval(function() {
+      self.itens.forEach(function(i) {
+      i.valorUnitario += i.valorUnitario * 0.1;
+      console.log(i.valorUnitario);
+    }); }, 5000);
+}
 
-item1 = new Item('654', 'bone', 1, 20);
-item2 = new Item('158', 'calca', 2, 150);
-item3 = new Item('354', 'tenis', 2, 250);
-item4 = new Item('156', 'camiseta', 40, 49);
-
-carrinho.adicionarItem(item1);
-carrinho.adicionarItem(item2);
-carrinho.adicionarItem(item3);
-carrinho.adicionarItem(item4);
-
-
-carrinho.removerItem('654');
-carrinho.atualizarQuantidade('156', 1);
+CarrinhoDeCompras.prototype.concluirPedido = function(){
+  clearInterval(this.intervalo);
+  delete this.intervalo;
+}
