@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Consulta Eclética</title>
+  <style>
+    section {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Busca por artista no Spotify</h2>
+
+  <input id="artista" type="nome" name="" value="" placeholder="Nome do Artista">
+  <button id="btnConsultar">Buscar</button>
+
+  <section>
+
+  </section>
+
+  <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script type="text/javascript">
+  $(function() {
+
+    function consultarArtista() {
+      var termoDeBusca = encodeURIComponent($('#artista').val());
+      $.get('https://api.spotify.com/v1/search?q='+termoDeBusca+'&type=artist')
+      .done(function(data) {
+        var artist = data.artists.items[0].id;
+        buscarAlbunsArtista(artist);
+      })
+    };
+
+    function buscarAlbunsArtista (idArtista) {
+      $('section').empty();
+      $.get('https://api.spotify.com/v1/artists/'+idArtista+'/albums?limit=50')
+      .done(function(data) {
+        var albuns = data.items;
+        albuns.forEach(function(elem) {
+          $('section').append(
+            $('<img>')
+            .attr('src', elem.images[1].url)
+            )
+        });
+      });
+    }
+
+    $('#btnConsultar').click(consultarArtista);
+
+  });
+  </script>
+</body>
+</html>
