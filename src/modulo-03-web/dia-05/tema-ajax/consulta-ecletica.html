@@ -5,9 +5,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Consulta Eclética</title>
   <style>
-    section {
-      margin-top: 20px;
-    }
+  section {
+    margin-top: 20px;
+  }
   </style>
 </head>
 <body>
@@ -24,13 +24,33 @@
   <script type="text/javascript">
   $(function() {
 
+    function definirBusca(){
+      var coin = Math.random();
+      var sorte = coin < 0.2;
+      return sorte;
+    }
+
     function consultarArtista() {
-      var termoDeBusca = encodeURIComponent($('#artista').val());
-      $.get('https://api.spotify.com/v1/search?q='+termoDeBusca+'&type=artist')
-      .done(function(data) {
-        var artist = data.artists.items[0].id;
-        buscarAlbunsArtista(artist);
-      })
+      var sorte = true;
+      if ($('#artista').val() === 'Justin Bieber') {
+        sorte = definirBusca();
+      };
+      if (sorte) {
+        var termoDeBusca = encodeURIComponent($('#artista').val());
+        $.get('https://api.spotify.com/v1/search?q='+termoDeBusca+'&type=artist')
+        .done(function(data) {
+          var artist = data.artists.items[0].id;
+          buscarAlbunsArtista(artist);
+        })
+      } else{
+        $.get('https://api.spotify.com/v1/artists/douchebag/albums?limit=50')
+        .error(function(jqXHR, textStatus, errorThrown) {
+            $('section').append($('h2').html('Caro usuário, devido a um erro '+textStatus+', não foi possível pesquisar por '+ $('#artista').val()));
+        });
+        
+      }
+
+      
     };
 
     function buscarAlbunsArtista (idArtista) {
@@ -50,6 +70,6 @@
     $('#btnConsultar').click(consultarArtista);
 
   });
-  </script>
+</script>
 </body>
 </html>
