@@ -45,7 +45,7 @@
       } else{
         $.get('https://api.spotify.com/v1/artists/douchebag/albums?limit=50')
         .error(function(jqXHR, textStatus, errorThrown) {
-            $('section').append($('h2').html('Caro usuário, devido a um erro '+textStatus+', não foi possível pesquisar por '+ $('#artista').val()));
+            $('section').append($('h2').html('Caro usuário, devido a um erro '+ jqXHR.status+', não foi possível pesquisar por '+ $('#artista').val()));
         });
         
       }
