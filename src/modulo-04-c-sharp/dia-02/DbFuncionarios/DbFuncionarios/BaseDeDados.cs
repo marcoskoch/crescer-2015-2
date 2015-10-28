@@ -34,10 +34,8 @@ namespace DbFuncionarios
 
         public IList<dynamic> BuscaRapida(string nome)
         {
-            var baseDeDados = new BaseDeDados();
-            List<Funcionario> funcionarios = baseDeDados.Funcionarios;
 
-            var resultado = from f in funcionarios
+            var resultado = from f in this.Funcionarios
                             where f.Nome.ToLower().Contains(nome.ToLower())
                             select new
                             {
@@ -51,6 +49,38 @@ namespace DbFuncionarios
         public IList<Funcionario> BuscarPorTurno(params TurnoTrabalho[] e)
         {
             var resultado = this.Funcionarios.Where(f => e.Contains(f.TurnoTrabalho));
+
+            return resultado.ToList();
+        }
+
+        public IList<dynamic> QtdFuncionariosPorTurno()
+        {
+            var resultado = from f in this.Funcionarios
+                            group f by f.TurnoTrabalho into f1
+                            select new
+                            {
+                                TurnoTrabalho = f1.First().TurnoTrabalho,
+                                Quantidade = f1.Count()
+                            };
+
+            return resultado.ToList<dynamic>();
+        }
+
+        public IList<Funcionario> BuscarPorCargo(Cargo cargo)
+        {
+            var resultado = this.Funcionarios.Where(funcionario => funcionario.Cargo.Titulo.Equals(cargo.Titulo)).ToList();
+
+            return resultado;
+        }
+
+        public IList<Funcionario> FiltrarPorIdadeAproximada(int idade)
+        {
+            int maxIdade = idade + 5;
+            int minIdade = idade - 5;
+            var dataMin= (DateTime.Now.AddYears(-maxIdade));
+            var dataMax = (DateTime.Now.AddYears(-minIdade));
+
+            var resultado = this.Funcionarios.Where(f => f.DataNascimento >= dataMin && f.DataNascimento <= dataMax);
 
             return resultado.ToList();
         }
