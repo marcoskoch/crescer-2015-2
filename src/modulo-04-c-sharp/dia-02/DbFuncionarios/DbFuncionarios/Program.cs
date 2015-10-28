@@ -10,6 +10,7 @@ namespace DbFuncionarios
     {
         static void Main(string[] args)
         {
+            var baseDeDados = new BaseDeDados();
             //dynamic[] projecao = BuscarNomeEIdETituloDoCargoDeFuncionarios();
 
             //foreach (dynamic item in projecao)
@@ -19,7 +20,14 @@ namespace DbFuncionarios
             //    Console.WriteLine(item.TituloCargo);
             //    Console.WriteLine();
             //}
-            
+
+            //var funcionarios = baseDeDados.BuscarPorTurno(TurnoTrabalho.Tarde, TurnoTrabalho.Noite, TurnoTrabalho.Manha);
+
+            //foreach (var funcionario in funcionarios)
+            //{
+            //    Console.WriteLine(funcionario.Nome + " - " + funcionario.TurnoTrabalho);
+            //}
+
             Console.Read();
         }
 

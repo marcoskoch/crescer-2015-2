@@ -18,6 +18,43 @@ namespace DbFuncionarios
             CriarBase();
         }
 
+        public IList<Funcionario> OrdenadosPorCargo()
+        {
+            var resultado = this.Funcionarios.OrderBy(funcionario => funcionario.Cargo.Titulo).ToList();
+
+            return resultado;
+        }
+
+        public IList<Funcionario> BuscarPorNome(string nome)
+        {
+            var resultado = this.Funcionarios.Where(funcionario => funcionario.Nome.ToLower().Contains(nome.ToLower())).ToList();
+
+            return resultado;
+        }
+
+        public IList<dynamic> BuscaRapida(string nome)
+        {
+            var baseDeDados = new BaseDeDados();
+            List<Funcionario> funcionarios = baseDeDados.Funcionarios;
+
+            var resultado = from f in funcionarios
+                            where f.Nome.ToLower().Contains(nome.ToLower())
+                            select new
+                            {
+                                Nome = f.Nome,
+                                TituloCargo = f.Cargo.Titulo
+                            };
+
+            return resultado.ToList<dynamic>();
+        }
+
+        public IList<Funcionario> BuscarPorTurno(params TurnoTrabalho[] e)
+        {
+            var resultado = this.Funcionarios.Where(f => e.Contains(f.TurnoTrabalho));
+
+            return resultado.ToList();
+        }
+
         private void CriarBase()
         {
             Funcionarios = new List<Funcionario>();
