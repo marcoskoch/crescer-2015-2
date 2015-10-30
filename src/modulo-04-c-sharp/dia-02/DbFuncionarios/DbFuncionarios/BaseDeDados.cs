@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace DbFuncionarios
@@ -20,14 +21,14 @@ namespace DbFuncionarios
 
         public IList<Funcionario> OrdenadosPorCargo()
         {
-            var resultado = this.Funcionarios.OrderBy(funcionario => funcionario.Cargo.Titulo).ToList();
+            var resultado = Funcionarios.OrderBy(funcionario => funcionario.Cargo.Titulo).ToList();
 
             return resultado;
         }
 
         public IList<Funcionario> BuscarPorNome(string nome)
         {
-            var resultado = this.Funcionarios.Where(funcionario => funcionario.Nome.ToLower().Contains(nome.ToLower())).ToList();
+            var resultado = Funcionarios.Where(funcionario => funcionario.Nome.ToLower().Contains(nome.ToLower())).ToList();
 
             return resultado;
         }
@@ -35,7 +36,7 @@ namespace DbFuncionarios
         public IList<dynamic> BuscaRapida(string nome)
         {
 
-            var resultado = from f in this.Funcionarios
+            var resultado = from f in Funcionarios
                             where f.Nome.ToLower().Contains(nome.ToLower())
                             select new
                             {
@@ -48,14 +49,14 @@ namespace DbFuncionarios
 
         public IList<Funcionario> BuscarPorTurno(params TurnoTrabalho[] e)
         {
-            var resultado = this.Funcionarios.Where(f => e.Contains(f.TurnoTrabalho));
+            var resultado = Funcionarios.Where(f => e.Contains(f.TurnoTrabalho));
 
             return resultado.ToList();
         }
 
         public IList<dynamic> QtdFuncionariosPorTurno()
         {
-            var resultado = from f in this.Funcionarios
+            var resultado = from f in Funcionarios
                             group f by f.TurnoTrabalho into f1
                             select new
                             {
@@ -68,7 +69,7 @@ namespace DbFuncionarios
 
         public IList<Funcionario> BuscarPorCargo(Cargo cargo)
         {
-            var resultado = this.Funcionarios.Where(funcionario => funcionario.Cargo.Titulo.Equals(cargo.Titulo)).ToList();
+            var resultado = Funcionarios.Where(funcionario => funcionario.Cargo.Titulo.Equals(cargo.Titulo)).ToList();
 
             return resultado;
         }
@@ -80,29 +81,25 @@ namespace DbFuncionarios
             var dataMin= (DateTime.Now.AddYears(-maxIdade));
             var dataMax = (DateTime.Now.AddYears(-minIdade));
 
-            var resultado = this.Funcionarios.Where(f => f.DataNascimento >= dataMin && f.DataNascimento <= dataMax);
+            var resultado = Funcionarios.Where(f => f.DataNascimento >= dataMin && f.DataNascimento <= dataMax);
 
             return resultado.ToList();
         }
 
         public double SalarioMedio()
         {
-            double media = this.Funcionarios.Sum(f => f.Cargo.Salario) / this.Funcionarios.Count();
-
-            return media;
+            return Funcionarios.Average(f => f.Cargo.Salario);
         }
 
         public double SalarioMedio(params TurnoTrabalho[] e)
         {
             var funcionariosPorTurno = BuscarPorTurno(e);
-            double media = funcionariosPorTurno.Sum(f => f.Cargo.Salario) / this.Funcionarios.Count();
-
-            return media;
+            return funcionariosPorTurno.Average(f => f.Cargo.Salario);
         }
 
         public IList<Funcionario> AniversariantesDoMes()
         {
-            var resultado = this.Funcionarios.Where(f => f.DataNascimento.Month == DateTime.Now.Month);
+            var resultado = Funcionarios.Where(f => f.DataNascimento.Month == DateTime.Now.Month);
 
             return resultado.ToList();
         }
