@@ -85,6 +85,28 @@ namespace DbFuncionarios
             return resultado.ToList();
         }
 
+        public double SalarioMedio()
+        {
+            double media = this.Funcionarios.Sum(f => f.Cargo.Salario) / this.Funcionarios.Count();
+
+            return media;
+        }
+
+        public double SalarioMedio(params TurnoTrabalho[] e)
+        {
+            var funcionariosPorTurno = BuscarPorTurno(e);
+            double media = funcionariosPorTurno.Sum(f => f.Cargo.Salario) / this.Funcionarios.Count();
+
+            return media;
+        }
+
+        public IList<Funcionario> AniversariantesDoMes()
+        {
+            var resultado = this.Funcionarios.Where(f => f.DataNascimento.Month == DateTime.Now.Month);
+
+            return resultado.ToList();
+        }
+
         private void CriarBase()
         {
             Funcionarios = new List<Funcionario>();
