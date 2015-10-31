@@ -14,14 +14,11 @@ namespace TrabalhoLocadora.UI
         {
             var baseDeDados = new BaseDeDados();
 
-            //baseDeDados.InsereJogo();
-            //Console.ReadLine();
-
             int opcao = 0;
             string nomeParaBuscar, novoNome, novaCategoria, novoPreco;
             int novoId;
 
-            while (opcao != 5)
+            while (opcao != Constants.FECHAR_APLICACAO)
             {
                 Console.Clear();
                 Console.WriteLine("Digite o numero de uma opção");
@@ -31,7 +28,17 @@ namespace TrabalhoLocadora.UI
                 Console.WriteLine("4 - Exportar relatorio de jogos em TXT");
                 Console.WriteLine("5 - Sair");
 
-                opcao = int.Parse(Console.ReadLine());
+                try
+                {
+                    opcao = int.Parse(Console.ReadLine());
+                }
+                catch (Exception)
+                {
+                    Console.Clear();
+                    Console.WriteLine("Valor inválido, apenas números inteiros de 1 a 5 tecle ENTER para digitar novamente!");
+                    Console.ReadLine();
+                }
+                
 
                 switch (opcao)
                 {
@@ -71,12 +78,22 @@ namespace TrabalhoLocadora.UI
                         break;
 
                     case 4:
+                        Console.Clear();
+                        baseDeDados.exportarRelatorioJogos();
+                        Console.WriteLine("Relatório gerado com sucesso!");
+                        Console.ReadLine();
                         break;
 
                     default:
                         break;
                 }
             }
+        }
+
+        static class Constants
+        {
+            public const int FECHAR_APLICACAO = 5;
+
         }
     }
 }
