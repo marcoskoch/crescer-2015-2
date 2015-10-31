@@ -100,19 +100,4 @@
     <preco>32.9</preco>
     <categoria>AVENTURA</categoria>
   </jogo>
-  <jogo id="21">
-    <nome>zlxkvjzxcv</nome>
-    <preco>50</preco>
-    <categoria>AVENTURA</categoria>
-  </jogo>
-  <jogo id="21">
-    <nome>GTA</nome>
-    <preco>999</preco>
-    <categoria>AVENTURA</categoria>
-  </jogo>
-  <jogo id="22">
-    <nome>teste</nome>
-    <preco>22.5</preco>
-    <categoria>RPG</categoria>
-  </jogo>
 </jogos>

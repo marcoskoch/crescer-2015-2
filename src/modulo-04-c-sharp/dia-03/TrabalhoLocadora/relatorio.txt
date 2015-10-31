@@ -1,5 +1,5 @@
                              LOCADORA NUNES GAMES                               
-31/10/2015                                                              03:44:01
+31/10/2015                                                              03:58:19
                               Relatório de jogos                                
                                                                                 
 ================================================================================
@@ -24,12 +24,9 @@ ID        Categoria       Nome                          Preço         Disponive
 18         AVENTURA       Sunset Riders                 R$ 37,90             SIM
 19         AVENTURA       Goof Troop                    R$ 41,90             SIM
 20         AVENTURA       Mickey to Donald: Magica      R$ 32,90             SIM
-21         AVENTURA       zlxkvjzxcv                    R$ 50,00             SIM
-21         AVENTURA       GTA                           R$ 999,00            SIM
-22              RPG       teste                         R$ 22,50             SIM
 -------------------------------------------------------------------------------
-Quantidade total de jogos: 23
-Valor médio por jogo: R$ 79,03
-Jogo mais caro: GTA
+Quantidade total de jogos: 20
+Valor médio por jogo: R$ 37,31
+Jogo mais caro: Zelda: A link to the past
 Jogo mais barato: Final Fight
 ================================================================================
