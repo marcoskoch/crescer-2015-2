@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -102,6 +103,25 @@ namespace DbFuncionarios
             var resultado = Funcionarios.Where(f => f.DataNascimento.Month == DateTime.Now.Month);
 
             return resultado.ToList();
+        }
+
+        public dynamic FuncionarioMaisComplexo()
+        {
+            string consoantes = "[b-df-hj-np-tv-z]";
+            Regex regexConsoantes = new Regex(consoantes, RegexOptions.IgnoreCase);
+
+            var maiorNumeroDeConsoantes = Funcionarios.Max(funcionario => regexConsoantes.Matches(funcionario.Nome).Count);
+
+            var resultado = (from f in Funcionarios
+                            select new
+                            {
+                                Nome = f.Nome,
+                                SalarioBR = string.Format("{0:C}", f.Cargo.Salario),
+                                SalarioUS = string.Format(CultureInfo.GetCultureInfo("en-US"), "{0:C}", f.Cargo.Salario)
+                            }).First(f => regexConsoantes.Matches(f.Nome).Count == maiorNumeroDeConsoantes);
+
+
+            return resultado;
         }
 
         private void CriarBase()
