@@ -2,6 +2,7 @@
 using System.Text;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Linq;
 
 namespace DbFuncionarios.Testes
 {
@@ -28,10 +29,11 @@ namespace DbFuncionarios.Testes
 
             string[] nomeFuncionariosEsperado = new string[2];
             nomeFuncionariosEsperado[0] = "Lucas Leal";
-            nomeFuncionariosEsperado[1] = "Lucas Kauer";            
+            nomeFuncionariosEsperado[1] = "Lucas Kauer";
 
-            Assert.AreEqual(nomeFuncionariosEsperado[0], nomeFuncionariosObtido[0]);
-            Assert.AreEqual(nomeFuncionariosEsperado[1], nomeFuncionariosObtido[1]);
+
+            Assert.IsTrue(nomeFuncionariosObtido.SequenceEqual(nomeFuncionariosEsperado));
         }
+
     }
 }
