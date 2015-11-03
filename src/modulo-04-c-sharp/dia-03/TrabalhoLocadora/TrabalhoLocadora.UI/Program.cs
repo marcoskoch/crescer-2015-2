@@ -75,11 +75,25 @@ namespace TrabalhoLocadora.UI
                         break;
 
                     case 3:
+                        Console.Clear();
+                        Console.WriteLine("Digite o ID do jogo que procura");
+                        novoId = int.Parse(Console.ReadLine());
+                        Console.Clear();
+                        Console.WriteLine("Digite o novo nome do jogo");
+                        novoNome = Console.ReadLine();
+                        Console.Clear();
+                        Console.WriteLine("Digite a nova categoria do jogo");
+                        novaCategoria = Console.ReadLine();
+                        Console.Clear();
+                        Console.WriteLine("Digite o novo preço do jogo");
+                        novoPreco = Console.ReadLine();
+                        Console.Clear();
+                        baseDeDados.EditarJogo(novoId, new Jogo(novoId, novoNome, double.Parse(novoPreco.Replace(".", ",")), novaCategoria));
                         break;
 
                     case 4:
                         Console.Clear();
-                        baseDeDados.exportarRelatorioJogos();
+                        baseDeDados.ExportarRelatorioJogos();
                         Console.WriteLine("Relatório gerado com sucesso!");
                         Console.ReadLine();
                         break;

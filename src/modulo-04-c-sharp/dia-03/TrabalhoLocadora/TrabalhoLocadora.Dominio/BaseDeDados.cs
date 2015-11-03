@@ -43,7 +43,7 @@ namespace TrabalhoLocadora.Dominio
             
         }
 
-        public void exportarRelatorioJogos()
+        public void ExportarRelatorioJogos()
         {
             string caminhoArquivo = @"C:\Users\Marcos\Documents\GitHub\crescer-2015-2\src\modulo-04-c-sharp\dia-03\TrabalhoLocadora\relatorio.txt";
 

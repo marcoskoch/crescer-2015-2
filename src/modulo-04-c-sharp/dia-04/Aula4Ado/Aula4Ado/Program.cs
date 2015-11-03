@@ -25,7 +25,7 @@ namespace Aula4Ado
                     "UPDATE Cargo SET Nome = @paramNome WHERE IDCargo = @paramIdCargo";
 
                 comando.AddParameter("paramNome", "Prefeito");
-                comando.AddParameter("paramIdCargo", "0 OR 1=1 --");
+                comando.AddParameter("paramIdCargo", 1);
 
                 connection.Open();
 
