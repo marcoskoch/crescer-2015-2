@@ -1,6 +1,41 @@
-﻿
+﻿@model LocadoraWeb.Models.relatorioModel
+
 @{
     ViewBag.Title = "Jogos Disponíveis";
 }
 
-<h2>Jogos Disponíveis   </h2>
+<h2>Jogos Disponíveis</h2>
+
+<table>
+	<caption>Relatório de Jogos Disponíveis</caption>
+	<thead>
+		<tr>
+			<th>ID</th>
+			<th>Categoria</th>
+			<th>Nome</th>
+			<th>Preço</th>
+			<th>Disponível</th>
+		</tr>
+	</thead>
+	<tbody>
+		
+    @{
+        foreach (var jogo in Model.Jogos)
+        {
+            <tr>
+                <td>@jogo.Id</td>
+                <td>@jogo.Categoria</td>
+                <td>@jogo.Nome</td>
+                <td>@string.Format("{0:C}", jogo.Preco)</td>
+                <td>Sim</td>
+            </tr>
+        }
+    }
+	</tbody>
+</table>
+<ul>    		
+	<li>@string.Format("Quantidade total de jogos: {0}", Model.NumeroDeJogos)</li>    		
+	<li>@string.Format("Valor médio por jogo: {0:C}", Model.MediaPrecoJogos)</li>    		
+	<li>@string.Format("Jogo mais caro: {0}", Model.JogoMaisCaro)</li>    		
+	<li>@string.Format("Jogo mais barato: {0}", Model.JogoMaisBarato)</li>
+</ul>

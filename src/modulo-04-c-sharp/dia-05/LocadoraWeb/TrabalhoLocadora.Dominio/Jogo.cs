@@ -10,10 +10,10 @@ namespace TrabalhoLocadora.Dominio
     {
         public int Id { get; private set; }
         public string Nome { get; private set; }
-        public double Preco { get; set; }
+        public decimal Preco { get; set; }
         public string Categoria { get; set; }
 
-        public Jogo (int id, string nome, double preco, string categoria)
+        public Jogo (int id, string nome, decimal preco, string categoria)
         {
             this.Id = id;
             this.Nome = nome;

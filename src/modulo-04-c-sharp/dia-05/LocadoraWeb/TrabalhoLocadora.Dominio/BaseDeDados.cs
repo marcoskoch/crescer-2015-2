@@ -11,7 +11,7 @@ namespace TrabalhoLocadora.Dominio
     public class BaseDeDados
     {
         public List<Jogo> ListaDeJogos { get; set; } 
-        private string caminhoXML = @"C:\Users\Marcos\Documents\GitHub\crescer-2015-2\src\modulo-04-c-sharp\dia-03\TrabalhoLocadora\game_store.xml";
+        private string caminhoXML = @"C:\Users\Marcos\Documents\GitHub\crescer-2015-2\src\modulo-04-c-sharp\dia-05\LocadoraWeb\game_store.xml";
 
         public List<Jogo> BuscarJogoPorNome(string nome)
         {
@@ -21,7 +21,7 @@ namespace TrabalhoLocadora.Dominio
             foreach (XElement jogo in jogos.Elements("jogo"))
             {
                 XElement name = jogo.Element("nome");
-                ListaDeJogos.Add(new Jogo(int.Parse(jogo.Attribute("id").Value), name.Value.ToString(), double.Parse(jogo.Element("preco").Value.Replace(".", ",")), jogo.Element("categoria").Value.ToString()));
+                ListaDeJogos.Add(new Jogo(int.Parse(jogo.Attribute("id").Value), name.Value.ToString(), decimal.Parse(jogo.Element("preco").Value.Replace(".", ",")), jogo.Element("categoria").Value.ToString()));
             }
 
             var resultado = ListaDeJogos.Where(j => j.Nome.ToLower().Contains(nome.ToLower())).ToList();
@@ -49,7 +49,7 @@ namespace TrabalhoLocadora.Dominio
 
             var jogos = BuscarJogoPorNome("");
             int numeroDeJogos = jogos.Count;
-            double mediaPrecoJogos = jogos.Average(j => j.Preco);
+            var mediaPrecoJogos = jogos.Average(j => j.Preco);
             var jogoMaisCaro = jogos.Where(j => j.Preco == (jogos.Max(j2 => j2.Preco))).First();
             var jogoMaisBarato = jogos.Where(j => j.Preco == (jogos.Min(j2 => j2.Preco))).First();
             var dataHoje = DateTime.Now;
