@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LocadoraWeb", "LocadoraWeb\LocadoraWeb.csproj", "{D9E2B9B4-037B-437C-A9A9-D6C06113EFFC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrabalhoLocadora.Dominio", "TrabalhoLocadora.Dominio\TrabalhoLocadora.Dominio.csproj", "{CF36A34C-CDB2-4EF0-BC9B-E0906BF9FCB2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{D9E2B9B4-037B-437C-A9A9-D6C06113EFFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D9E2B9B4-037B-437C-A9A9-D6C06113EFFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D9E2B9B4-037B-437C-A9A9-D6C06113EFFC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF36A34C-CDB2-4EF0-BC9B-E0906BF9FCB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF36A34C-CDB2-4EF0-BC9B-E0906BF9FCB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF36A34C-CDB2-4EF0-BC9B-E0906BF9FCB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF36A34C-CDB2-4EF0-BC9B-E0906BF9FCB2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
