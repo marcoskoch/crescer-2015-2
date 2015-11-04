@@ -1,4 +1,4 @@
-﻿@model List<JogoModel>
+﻿@model RepositorioModel
 @{
     ViewBag.Title = "Jogos Disponíveis";
 }
@@ -13,12 +13,20 @@
             <th style="width: 30%">Preço</th>
         </tr>
     </thead>
-    @foreach (var jogo in @Model)
-    {
-        <tr>
-            <td>@jogo.Nome</td>            
-            <td>@jogo.Categoria</td>
-            <td>@jogo.Preco.ToString("c")</td>
-        </tr>
-    }
+    <tbody>
+        @foreach (var jogo in Model.Jogos)
+        {
+            <tr>
+                <td>@jogo.Nome</td>
+                <td>@jogo.Categoria</td>
+                <td>@jogo.Preco.ToString("c")</td>
+            </tr>
+        }
+    </tbody>
+    <ul>
+        <li>@string.Format("Quantidade total de jogos: {0}", Model.NumeroDeJogos)</li>
+        <li>@string.Format("Valor médio por jogo: {0:C}", Model.MediaPrecoJogos)</li>
+        <li>@string.Format("Jogo mais caro: {0}", Model.JogoMaisCaro)</li>
+        <li>@string.Format("Jogo mais barato: {0}", Model.JogoMaisBarato)</li>
+    </ul>
 </table>
