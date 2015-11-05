@@ -9,8 +9,9 @@
     <thead>
         <tr>
             <th style="width: 40%">Jogo</th>            
-            <th style="width: 30%">Categoria</th>
-            <th style="width: 30%">Preço</th>
+            <th style="width: 20%">Categoria</th>
+            <th style="width: 20%">Preço</th>
+            <th style="width: 20%">Detalhes do Jogo</th>
         </tr>
     </thead>
     <tbody>
@@ -20,13 +21,14 @@
                 <td>@jogo.Nome</td>
                 <td>@jogo.Categoria</td>
                 <td>@jogo.Preco.ToString("c")</td>
+                <td>@Html.ActionLink("Detalhes do Jogo", "DetalhesDoJogo", "Jogo", new { id = jogo.Id }, null)</td>
             </tr>
         }
     </tbody>
-    <ul>
-        <li>Quantidade total de jogos: @Model.NumeroDeJogos.ToString()</li>
-        <li>Valor médio por jogo: @Model.MediaPrecoJogos.ToString("C")</li>
-        <li>Jogo mais caro: @Model.JogoMaisCaro</li>
-        <li>Jogo mais barato: @Model.JogoMaisBarato</li>
-    </ul>
 </table>
+<ul>
+    <li>Quantidade total de jogos: @Model.NumeroDeJogos.ToString()</li>
+    <li>Valor médio por jogo: @Model.MediaPrecoJogos.ToString("C")</li>
+    <li>Jogo mais caro: @Model.JogoMaisCaro</li>
+    <li>Jogo mais barato: @Model.JogoMaisBarato</li>
+</ul>

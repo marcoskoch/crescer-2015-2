@@ -20,7 +20,7 @@ namespace Locadora.Web.MVC.Controllers
 
             foreach (var jogo in jogos)
             {
-                model.Jogos.Add(new JogoModel() { Nome = jogo.Nome, Categoria = jogo.Categoria.ToString(), Preco = jogo.Preco });
+                model.Jogos.Add(new JogoModel() { Id = jogo.Id, Nome = jogo.Nome, Categoria = jogo.Categoria.ToString(), Preco = jogo.Preco });
             }
 
             model.NumeroDeJogos = jogos.Count();
