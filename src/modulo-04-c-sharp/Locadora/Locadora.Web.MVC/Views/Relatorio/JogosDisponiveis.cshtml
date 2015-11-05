@@ -24,9 +24,9 @@
         }
     </tbody>
     <ul>
-        <li>@string.Format("Quantidade total de jogos: {0}", Model.NumeroDeJogos)</li>
-        <li>@string.Format("Valor médio por jogo: {0:C}", Model.MediaPrecoJogos)</li>
-        <li>@string.Format("Jogo mais caro: {0}", Model.JogoMaisCaro)</li>
-        <li>@string.Format("Jogo mais barato: {0}", Model.JogoMaisBarato)</li>
+        <li>Quantidade total de jogos: @Model.NumeroDeJogos.ToString()</li>
+        <li>Valor médio por jogo: @Model.MediaPrecoJogos.ToString("C")</li>
+        <li>Jogo mais caro: @Model.JogoMaisCaro</li>
+        <li>Jogo mais barato: @Model.JogoMaisBarato</li>
     </ul>
 </table>
