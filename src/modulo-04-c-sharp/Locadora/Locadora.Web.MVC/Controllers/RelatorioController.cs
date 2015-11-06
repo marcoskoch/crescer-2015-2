@@ -13,11 +13,27 @@ namespace Locadora.Web.MVC.Controllers
     {
         private IJogoRepositorio jogoRepositorio = new Repositorio.ADO.JogoRepositorio();
 
-        public ActionResult JogosDisponiveis()
+        public ActionResult JogosDisponiveis(string nome)
         {
             var model = new RepositorioModel();
-            var jogos = jogoRepositorio.BuscarTodos();
+            IList<Dominio.Jogo> jogos;
+            if (nome != null)
+            {
+                jogos = jogoRepositorio.BuscarPorNome(nome);
+            }
+            else
+            {
+                jogos = jogoRepositorio.BuscarTodos();
+            }
 
+            model = ListarJogosModel(jogos);
+
+            return View(model);
+        }
+
+        private RepositorioModel ListarJogosModel(IList<Dominio.Jogo> jogos)
+        {
+            var model = new RepositorioModel();
             foreach (var jogo in jogos)
             {
                 model.Jogos.Add(new JogoModel() { Id = jogo.Id, Nome = jogo.Nome, Categoria = jogo.Categoria.ToString(), Preco = jogo.Preco });
@@ -28,7 +44,7 @@ namespace Locadora.Web.MVC.Controllers
             model.JogoMaisCaro = jogos.Where(j => j.Preco == (jogos.Max(j2 => j2.Preco))).First().Nome;
             model.JogoMaisBarato = jogos.Where(j => j.Preco == (jogos.Min(j2 => j2.Preco))).First().Nome;
 
-            return View(model);
+            return model;
         }
     }
 }

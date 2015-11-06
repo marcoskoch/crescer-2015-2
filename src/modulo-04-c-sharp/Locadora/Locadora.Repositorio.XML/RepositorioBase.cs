@@ -13,7 +13,7 @@ namespace Locadora.Repositorio.XML
 
         protected XElement CarregarBaseXml()
         {
-            return XElement.Load(NomeArquivoXml);
+            return XElement.Load(@"C:\Users\Marcos\Documents\GitHub\crescer-2015-2\src\modulo-04-c-sharp\Locadora\Locadora.Web.MVC\bin\" + NomeArquivoXml);
         }
 
         protected void SalvarDbXml(XElement db)
