@@ -55,6 +55,7 @@ namespace Locadora.Web.MVC.Controllers
             {
                 Jogo jogoParaSalvar = new Jogo()
                 {
+                    Id = Convert.ToInt32(model.IdJogo),
                     Nome = model.Nome,
                     Preco = model.Preco,
                     Categoria = model.Categoria,
@@ -63,7 +64,15 @@ namespace Locadora.Web.MVC.Controllers
                     UrlImagem = model.UrlImagem,
                     TagVideo = model.TagVideo
                 };
-                jogoRepositorio.Criar(jogoParaSalvar);
+                if (jogoParaSalvar.Id == null)
+                {
+                    jogoRepositorio.Criar(jogoParaSalvar);
+                }
+                else
+                {
+                    jogoRepositorio.Atualizar(jogoParaSalvar);
+                }
+                
                 TempData["Mensagem"] = "Jogo salvo com sucesso!";
 
                 return RedirectToAction("JogosDisponiveis", "Relatorio");

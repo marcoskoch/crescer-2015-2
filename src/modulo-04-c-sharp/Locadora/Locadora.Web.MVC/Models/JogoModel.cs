@@ -20,10 +20,10 @@ namespace Locadora.Web.MVC.Models
         [Required]
         public decimal Preco { get; set; }
 
-        [Required]
+        [Range(1, int.MaxValue, ErrorMessage = "Selecione um Categoria")]
         public Categoria Categoria { get; set; }
 
-        [Required]
+        [Range(1, int.MaxValue, ErrorMessage = "Selecione um Selo")]
         public Selo Selo { get; set; }
 
         public string UrlImagem { get; set; }

@@ -55,12 +55,20 @@ namespace EF
 
         public int Atualizar(Jogo jogo)
         {
-            throw new NotImplementedException();
+            using (var bd = CriaBancoDeDados())
+            {
+                bd.Entry(jogo).State = System.Data.Entity.EntityState.Modified;
+                return bd.SaveChanges();
+            }
         }
 
         public int Excluir(int id)
         {
-            throw new NotImplementedException();
+            using (var bd = CriaBancoDeDados())
+            {
+                bd.Jogo.Remove(bd.Jogo.Find(id));
+                return bd.SaveChanges();
+            }
         }
     }
 }
