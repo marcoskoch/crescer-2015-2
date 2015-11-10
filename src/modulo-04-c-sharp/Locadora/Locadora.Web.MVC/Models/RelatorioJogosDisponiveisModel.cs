@@ -49,7 +49,7 @@ namespace Locadora.Web.MVC.Models
 
         public JogoDisponivelModel(Jogo jogo)
         {
-            this.IdJogo = jogo.Id;
+            this.IdJogo = jogo.IdPermissao;
             this.Nome = jogo.Nome;
             this.Preco = jogo.Preco;
             this.Categoria = jogo.Categoria;

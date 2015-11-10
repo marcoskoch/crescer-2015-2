@@ -1,0 +1,15 @@
+autenticação c#
+
+
+atributo Authorize para controler
+
+allowanonymous autoriza acesso 
+
+Authorize roles = tipo de usuarios
+
+identidade genericIdentity()
+string[] roles = marter, atendente
+principal genericPricipal(identidade, roles)
+
+
+md5 com salt

@@ -30,7 +30,7 @@ namespace Locadora.Web.MVC.Controllers
 
                 var model = new JogoModel()
                 {
-                    IdJogo = jogoEncontrado.Id,
+                    IdJogo = jogoEncontrado.IdPermissao,
                     Nome = jogoEncontrado.Nome,
                     Preco = jogoEncontrado.Preco,
                     Categoria = jogoEncontrado.Categoria,
@@ -55,7 +55,7 @@ namespace Locadora.Web.MVC.Controllers
             {
                 Jogo jogoParaSalvar = new Jogo()
                 {
-                    Id = Convert.ToInt32(model.IdJogo),
+                    IdPermissao = Convert.ToInt32(model.IdJogo),
                     Nome = model.Nome,
                     Preco = model.Preco,
                     Categoria = model.Categoria,
@@ -64,7 +64,7 @@ namespace Locadora.Web.MVC.Controllers
                     UrlImagem = model.UrlImagem,
                     TagVideo = model.TagVideo
                 };
-                if (jogoParaSalvar.Id == null)
+                if (jogoParaSalvar.IdPermissao == null)
                 {
                     jogoRepositorio.Criar(jogoParaSalvar);
                 }

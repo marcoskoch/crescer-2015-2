@@ -18,11 +18,15 @@ namespace EF
 
         public DbSet<Jogo> Jogo { get; set; }
         public DbSet<Cliente> Cliente { get; set; }
+        public DbSet<Usuario> Usuario{ get; set; }
+        public DbSet<Permissao> Permissao { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Configurations.Add(new ClienteMap());
             modelBuilder.Configurations.Add(new JogoMap());
+            modelBuilder.Configurations.Add(new UsuarioMap());
+            modelBuilder.Configurations.Add(new PermissaoMap());
             base.OnModelCreating(modelBuilder);
         }
     }
@@ -32,8 +36,37 @@ namespace EF
         public ClienteMap()
         {
             ToTable("Cliente");
-            HasKey(c => c.Id);
+            HasKey(c => c.IdPermissao);
             Property(p => p.Nome).IsRequired();
+        }
+    }
+
+    class UsuarioMap : EntityTypeConfiguration<Usuario>
+    {
+        public UsuarioMap()
+        {
+            ToTable("Usuario");
+            HasKey(u => u.IdUsuario);
+            Property(u => u.Nome).IsRequired();
+            Property(u => u.Email).IsRequired();
+            Property(u => u.Senha).IsRequired();
+            HasMany(u => u.Permissoes).WithMany(p => p.Usuarios).Map(m =>
+                                                                    {
+                                                                        m.ToTable("Usuario_Permissao");
+                                                                        m.MapLeftKey("IdUsuario");
+                                                                        m.MapRightKey("IdPermissao");
+                                                                    });
+        }
+    }
+
+    class PermissaoMap : EntityTypeConfiguration<Permissao>
+    {
+        public PermissaoMap()
+        {
+            ToTable("Permissao");
+            HasKey(p => p.IdPermissao);
+            Property(p => p.Nome).IsRequired();
+
         }
     }
 
@@ -42,7 +75,7 @@ namespace EF
         public JogoMap()
         {
             ToTable("Jogo");
-            HasKey(p => p.Id);
+            HasKey(p => p.IdPermissao);
             Property(p => p.Nome).IsRequired();
             Property(p => p.Preco).IsRequired();
             Property(j => j.Categoria).IsRequired();

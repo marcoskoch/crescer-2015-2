@@ -32,7 +32,7 @@ namespace EF.DbFirst
         public ClienteMap()
         {
             ToTable("Cliente");
-            HasKey(c => c.Id);
+            HasKey(c => c.IdPermissao);
             Property(p => p.Nome).IsRequired();
         }
     }
@@ -42,7 +42,7 @@ namespace EF.DbFirst
         public JogoMap()
         {
             ToTable("Jogo");
-            HasKey(p => p.Id);
+            HasKey(p => p.IdPermissao);
             Property(p => p.Nome).IsRequired();
             Property(p => p.Preco).IsRequired();
             Property(p => p.Descricao).IsRequired();

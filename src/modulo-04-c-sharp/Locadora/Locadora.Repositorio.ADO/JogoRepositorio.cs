@@ -42,7 +42,7 @@ namespace Locadora.Repositorio.ADO
                 comando.AddParam("paramDescricao", entidade.Descricao);
                 comando.AddParam("paramUrlImagem", entidade.UrlImagem);
                 comando.AddParam("paramTagVideo", entidade.TagVideo);
-                comando.AddParam("paramId", entidade.Id);
+                comando.AddParam("paramId", entidade.IdPermissao);
 
                 conexao.Open();
 

@@ -2,6 +2,7 @@
 using Locadora.Dominio;
 using Locadora.Dominio.Repositorio;
 using Locadora.Web.MVC.Models;
+using Locadora.Web.MVC.Seguranca.Filters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,7 @@ using System.Web.Mvc;
 
 namespace Locadora.Web.MVC.Controllers
 {
+    [Autorizador]
     public class RelatorioController : BaseController
     {
         IJogoRepositorio jogoRepositorio = new JogoRepositorio();
@@ -17,7 +19,8 @@ namespace Locadora.Web.MVC.Controllers
         {
             return View();
         }
-        
+
+        [Autorizador(Roles = "ADMIN")]
         public ActionResult JogosDisponiveis(string nome)
         {
             IList<Jogo> jogosEncontrados = null;

@@ -35,7 +35,7 @@ namespace EF
         {
             using (var db = CriaBancoDeDados())
             {
-                return db.Jogo.Where(j => j.Id == id).FirstOrDefault();
+                return db.Jogo.Where(j => j.IdPermissao == id).FirstOrDefault();
             }
         }
 

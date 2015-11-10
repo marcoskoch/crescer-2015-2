@@ -29,7 +29,7 @@ namespace Locadora.Dominio
 
         public Jogo(int id, Cliente cliente = null) : base()
         {
-            this.Id = id;
+            this.IdPermissao = id;
             this.Cliente = cliente;
         }
 
@@ -41,7 +41,7 @@ namespace Locadora.Dominio
         public override string ToString()
         {
             var builder = new StringBuilder();
-            builder.AppendLine("Id: " + this.Id);
+            builder.AppendLine("Id: " + this.IdPermissao);
             builder.AppendLine("Nome: " + this.Nome);
             builder.AppendLine("Preço: " + this.Preco.ToString("C", CultureInfo.GetCultureInfo("pt-BR")));
             builder.AppendLine("Categoria: " + this.Categoria);
@@ -60,7 +60,7 @@ namespace Locadora.Dominio
             {
                 Jogo jogoComp = (Jogo)obj;
 
-                return this.Id == jogoComp.Id
+                return this.IdPermissao == jogoComp.IdPermissao
                     && this.Nome == jogoComp.Nome
                     && this.Preco == jogoComp.Preco
                     && this.Categoria == jogoComp.Categoria

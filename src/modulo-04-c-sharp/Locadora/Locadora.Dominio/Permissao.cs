@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace Locadora.Dominio
 {
-    public abstract class EntidadeBase
+    public class Permissao
     {
         public int IdPermissao { get; set; }
+        public string Nome { get; set; }
+        public ICollection<Usuario> Usuarios { get; set; }
     }
 }
