@@ -1,0 +1,12 @@
+Install-Package EntityFramework
+
+Classe banco herda de DbContext
+
+Construtor chama o construtor da classe pai : base(conection string)
+
+OnModelCreating
+
+cada mapeamento tem totable("nome da tabela")
+
+find busca pelas chaves
+

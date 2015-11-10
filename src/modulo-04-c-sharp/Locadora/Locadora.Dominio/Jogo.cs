@@ -8,30 +8,34 @@ namespace Locadora.Dominio
     {
         public string Nome { get; set; }
 
-        public string Descricao { get; set; }
-
         public decimal Preco { get; set; }
 
         public Categoria Categoria { get; set; }
-
+        
         public Selo Selo { get; set; }
 
-        public int? IdClienteLocacao { get; private set; }
+        public string Descricao { get; set; }
+
+        public string UrlImagem { get; set; }
+
+        public string TagVideo { get; set; }
+
+        public Cliente Cliente { get; private set; }
         
         public Jogo()
         {
-
+            this.Selo = Selo.Bronze;
         }
 
-        public Jogo(int id, int? idClienteLocacao = null)
+        public Jogo(int id, Cliente cliente = null) : base()
         {
             this.Id = id;
-            this.IdClienteLocacao = idClienteLocacao;
+            this.Cliente = cliente;
         }
 
         public void LocarPara(Cliente cliente)
         {
-            this.IdClienteLocacao = cliente.Id;
+            this.Cliente = cliente;
         }
 
         public override string ToString()
@@ -60,7 +64,7 @@ namespace Locadora.Dominio
                     && this.Nome == jogoComp.Nome
                     && this.Preco == jogoComp.Preco
                     && this.Categoria == jogoComp.Categoria
-                    && this.IdClienteLocacao == jogoComp.IdClienteLocacao;
+                    && this.Cliente == jogoComp.Cliente;
             }
 
             return false;

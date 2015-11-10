@@ -16,3 +16,34 @@ textarea {
     max-width: 280px;
 }
 
+.color-white {
+    color: #fff;
+}
+
+.bg-black {
+    background-color: #000;
+}
+
+.fb-page {
+    float: right;
+}
+
+.imagem-detalhe-jogo {
+    width: 100%;
+}
+
+.imagem-selo-jogo {
+    width: 32px;
+}
+
+.editar-jogo{
+    display: block;
+    margin: 0 auto;
+    width: 24px;
+    height: 24px;
+    background: url('Images/pencil43.png');
+}
+
+.editar-jogo:hover{
+    background: url('Images/pencil43-hover.png')
+}
