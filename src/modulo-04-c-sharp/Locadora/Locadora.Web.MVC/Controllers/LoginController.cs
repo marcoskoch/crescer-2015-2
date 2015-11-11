@@ -30,11 +30,12 @@ namespace Locadora.Web.MVC.Controllers
 
             //string asdasd = saltedHash;
 
-           // var usuarioLogin = jogoRepositorio.BuscarPorEmail(usuario);
+            var usuarioLogin = jogoRepositorio.BuscarPorEmail(usuario);
+            var permissoesLogin = usuarioLogin.Permissoes.Select(p => p.Nome).ToArray();
 
-            if (usuario == "marcos.koch@cwi.com.br" && senha == "123")
+            if (usuario == usuarioLogin.Email && senha == usuarioLogin.Senha)
             {
-                var usuarioLogadoModel = new UsuarioLogado("marcos.koch@cwi.com.br", new string[] { "MASTER", "ADMIN" });
+                var usuarioLogadoModel = new UsuarioLogado(usuarioLogin.Email, permissoesLogin);
 
                 FormsAuthentication.SetAuthCookie(usuario, true);
                 Session["USUARIO_LOGADO"] = usuarioLogadoModel;

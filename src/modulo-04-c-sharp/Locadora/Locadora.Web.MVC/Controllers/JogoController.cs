@@ -2,6 +2,7 @@
 using Locadora.Dominio;
 using Locadora.Dominio.Repositorio;
 using Locadora.Web.MVC.Models;
+using Locadora.Web.MVC.Seguranca.Filters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +23,7 @@ namespace Locadora.Web.MVC.Controllers
             return View(jogoModel);
         }
 
+        [Autorizador(Roles = "ADMIN")]
         public ActionResult Manter(int? id)
         {
             if (id.HasValue)
@@ -48,6 +50,7 @@ namespace Locadora.Web.MVC.Controllers
             }
         }
 
+        [Autorizador(Roles = "ADMIN")]
         [HttpPost]
         public ActionResult Salvar(JogoModel model)
         {

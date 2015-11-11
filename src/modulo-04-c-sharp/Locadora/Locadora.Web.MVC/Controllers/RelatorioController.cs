@@ -20,7 +20,7 @@ namespace Locadora.Web.MVC.Controllers
             return View();
         }
 
-        [Autorizador(Roles = "ADMIN")]
+        [Autorizador(Roles = "MASTER")]
         public ActionResult JogosDisponiveis(string nome)
         {
             IList<Jogo> jogosEncontrados = null;
