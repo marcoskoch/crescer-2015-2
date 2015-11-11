@@ -8,6 +8,7 @@
 
 @using (Html.BeginForm("Login", "Login", FormMethod.Post, new { @class = "form" }))
 {
+    @Html.AntiForgeryToken();
     <div class="form-group">
         <label for="usuario">Nome:</label>
         <input type="text" class="form-control" name="usuario" value="" />

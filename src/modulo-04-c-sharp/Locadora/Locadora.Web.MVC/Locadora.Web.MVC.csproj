@@ -157,6 +157,7 @@
     <Compile Include="Models\UsuarioLogado.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Seguranca\Filters\Autorizador.cs" />
+    <Compile Include="Seguranca\Filters\CriptografarSenha.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />

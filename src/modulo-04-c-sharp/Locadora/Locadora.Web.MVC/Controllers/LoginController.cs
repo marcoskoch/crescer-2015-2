@@ -1,10 +1,12 @@
 ﻿using EF;
 using Locadora.Dominio.Repositorio;
 using Locadora.Web.MVC.Models;
+using Locadora.Web.MVC.Seguranca.Filters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
@@ -22,18 +24,15 @@ namespace Locadora.Web.MVC.Controllers
         public ActionResult Login(string usuario, string senha)
         {
             IUsuarioRepositorio jogoRepositorio = new UsuarioRepositorio();
+            SenhaCriptografada seguraca = new SenhaCriptografada();
             //TODO: validar usuario
-            //var salt = System.Text.Encoding.UTF8.GetBytes(usuario);
-            //var password = System.Text.Encoding.UTF8.GetBytes(senha);
-            //var hmacMD5 = new HMACMD5(salt);
-            //var saltedHash = hmacMD5.ComputeHash(password);
 
-            //string asdasd = saltedHash;
 
+            var senhaCriptografada = seguraca.SaltedHash(usuario, senha);
             var usuarioLogin = jogoRepositorio.BuscarPorEmail(usuario);
             var permissoesLogin = usuarioLogin.Permissoes.Select(p => p.Nome).ToArray();
 
-            if (usuario == usuarioLogin.Email && senha == usuarioLogin.Senha)
+            if (usuario == usuarioLogin.Email && senhaCriptografada == usuarioLogin.Senha)
             {
                 var usuarioLogadoModel = new UsuarioLogado(usuarioLogin.Email, permissoesLogin);
 
