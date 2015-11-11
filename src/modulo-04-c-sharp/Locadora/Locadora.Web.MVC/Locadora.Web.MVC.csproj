@@ -157,7 +157,6 @@
     <Compile Include="Models\UsuarioLogado.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Seguranca\Filters\Autorizador.cs" />
-    <Compile Include="Seguranca\Model\UsuarioValidacao.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -175,7 +174,6 @@
     <Content Include="Views\Jogo\DetalhesDoJogo.cshtml" />
     <Content Include="Views\Cliente\Index.cshtml" />
     <Content Include="Views\Cliente\Manter.cshtml" />
-    <Content Include="Views\Shared\Jogo\_SeloJogo.cshtml" />
     <Content Include="Views\Jogo\Manter.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
     <None Include="Web.Debug.config">
@@ -187,6 +185,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Seguranca\Model\" />
+    <Folder Include="Views\Shared\Jogo\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EF\EF.csproj">
@@ -196,10 +196,6 @@
     <ProjectReference Include="..\Locadora.Dominio\Locadora.Dominio.csproj">
       <Project>{93d95d00-78c7-4b77-be44-686ab7a29c7c}</Project>
       <Name>Locadora.Dominio</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Locadora.Repositorio.ADO\Locadora.Repositorio.ADO.csproj">
-      <Project>{14105bc9-3336-43bc-b394-6e0aa2a29751}</Project>
-      <Name>Locadora.Repositorio.ADO</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

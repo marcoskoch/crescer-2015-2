@@ -13,8 +13,8 @@
             <th>Nome</th>
             <th>Categoria</th>
             <th>Preço</th>
+            <th>Selo</th>
             <th style="">Editar</th>
-            @*<th>Selo</th>*@
         </tr>
     </thead>
 
@@ -24,10 +24,10 @@
             <td>@Html.ActionLink(jogo.Nome, "DetalhesDoJogo", "Jogo", new { id = jogo.IdJogo }, null)</td>
             <td>@jogo.Categoria</td>
             <td>@jogo.Preco.ToString("c")</td>
+            <td class="text-center"> @jogo.Selo</td>
             <td>
                 <a class="editar-jogo" href="~/Jogo/Manter/@jogo.IdJogo"></a>
             </td>
-            @*<td class="text-center">@Html.Partial("~/Views/Shared/Jogo/_SeloJogo.cshtml", jogo.Selo)</td>*@
         </tr>
     }
 </table>

@@ -17,7 +17,7 @@ namespace Locadora.Dominio
 
         public Cliente(int id)
         {
-            this.IdPermissao = id;
+            this.Id = id;
         }
     }
 }

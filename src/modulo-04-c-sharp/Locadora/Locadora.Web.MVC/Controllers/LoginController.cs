@@ -1,4 +1,6 @@
-﻿using Locadora.Web.MVC.Models;
+﻿using EF;
+using Locadora.Dominio.Repositorio;
+using Locadora.Web.MVC.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +21,7 @@ namespace Locadora.Web.MVC.Controllers
 
         public ActionResult Login(string usuario, string senha)
         {
+            IUsuarioRepositorio jogoRepositorio = new UsuarioRepositorio();
             //TODO: validar usuario
             //var salt = System.Text.Encoding.UTF8.GetBytes(usuario);
             //var password = System.Text.Encoding.UTF8.GetBytes(senha);
@@ -27,9 +30,11 @@ namespace Locadora.Web.MVC.Controllers
 
             //string asdasd = saltedHash;
 
-            if (usuario == "didi" && senha == "die")
+           // var usuarioLogin = jogoRepositorio.BuscarPorEmail(usuario);
+
+            if (usuario == "marcos.koch@cwi.com.br" && senha == "123")
             {
-                var usuarioLogadoModel = new UsuarioLogado("didi", new string[] { "MASTER" });
+                var usuarioLogadoModel = new UsuarioLogado("marcos.koch@cwi.com.br", new string[] { "MASTER", "ADMIN" });
 
                 FormsAuthentication.SetAuthCookie(usuario, true);
                 Session["USUARIO_LOGADO"] = usuarioLogadoModel;

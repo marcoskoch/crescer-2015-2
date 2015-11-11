@@ -36,7 +36,7 @@ namespace EF
         public ClienteMap()
         {
             ToTable("Cliente");
-            HasKey(c => c.IdPermissao);
+            HasKey(c => c.Id);
             Property(p => p.Nome).IsRequired();
         }
     }
@@ -75,7 +75,7 @@ namespace EF
         public JogoMap()
         {
             ToTable("Jogo");
-            HasKey(p => p.IdPermissao);
+            HasKey(p => p.Id);
             Property(p => p.Nome).IsRequired();
             Property(p => p.Preco).IsRequired();
             Property(j => j.Categoria).IsRequired();

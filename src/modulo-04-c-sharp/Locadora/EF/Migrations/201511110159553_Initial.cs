@@ -33,30 +33,53 @@ namespace EF.Migrations
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Cliente", t => t.IdClienteLocacao)
                 .Index(t => t.IdClienteLocacao);
-
+            
             CreateTable(
-                "dbo.Selo",
+                "dbo.Permissao",
                 c => new
-                {
-                    Id = c.Int(nullable: false, identity: false),
-                    Descricao = c.String(nullable: false, maxLength: 250),
-                })
-                .PrimaryKey(t => t.Id);
-
+                    {
+                        IdPermissao = c.Int(nullable: false, identity: true),
+                        Nome = c.String(nullable: false),
+                    })
+                .PrimaryKey(t => t.IdPermissao);
+            
             CreateTable(
-                "dbo.Categoria",
+                "dbo.Usuario",
                 c => new
-                {
-                    Id = c.Int(nullable: false, identity: false),
-                    Descricao = c.String(nullable: false, maxLength: 250),
-                })
-                .PrimaryKey(t => t.Id);            
+                    {
+                        IdUsuario = c.Int(nullable: false, identity: true),
+                        Nome = c.String(nullable: false),
+                        Email = c.String(nullable: false),
+                        Senha = c.String(nullable: false),
+                    })
+                .PrimaryKey(t => t.IdUsuario);
+            
+            CreateTable(
+                "dbo.Usuario_Permissao",
+                c => new
+                    {
+                        IdUsuario = c.Int(nullable: false),
+                        IdPermissao = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => new { t.IdUsuario, t.IdPermissao })
+                .ForeignKey("dbo.Usuario", t => t.IdUsuario, cascadeDelete: true)
+                .ForeignKey("dbo.Permissao", t => t.IdPermissao, cascadeDelete: true)
+                .Index(t => t.IdUsuario)
+                .Index(t => t.IdPermissao);
+            
         }
         
         public override void Down()
         {
+            DropForeignKey("dbo.Usuario_Permissao", "IdPermissao", "dbo.Permissao");
+            DropForeignKey("dbo.Usuario_Permissao", "IdUsuario", "dbo.Usuario");
             DropForeignKey("dbo.Jogo", "IdClienteLocacao", "dbo.Cliente");
+            DropIndex("dbo.Usuario_Permissao", new[] { "IdPermissao" });
+            DropIndex("dbo.Usuario_Permissao", new[] { "IdUsuario" });
             DropIndex("dbo.Jogo", new[] { "IdClienteLocacao" });
+            DropTable("dbo.Usuario_Permissao");
+            DropTable("dbo.Usuario");
+            DropTable("dbo.Permissao");
             DropTable("dbo.Jogo");
             DropTable("dbo.Cliente");
         }

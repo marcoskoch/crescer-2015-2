@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Locadora.Dominio
+namespace Locadora.Dominio.Repositorio
 {
-    public abstract class EntidadeBase
+    public interface IUsuarioRepositorio
     {
-        public int Id { get; set; }
+        Usuario BuscarPorEmail(string email);
     }
 }
