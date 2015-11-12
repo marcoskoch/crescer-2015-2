@@ -1,4 +1,5 @@
 ﻿using Locadora.Web.MVC.Models;
+using Locadora.Web.MVC.Seguranca.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,7 @@ namespace Locadora.Web.MVC.Seguranca.Filters
         {
             UsuarioLogado usuarioLogado = filterContext.HttpContext.Session["USUARIO_LOGADO"] as UsuarioLogado;
 
-            var identidade = new GenericIdentity(usuarioLogado.Usuario);
+            var identidade = new GenericIdentity(usuarioLogado.Email);
             string[] roles = usuarioLogado.Permissoes;
 
             var principal = new GenericPrincipal(identidade, roles);

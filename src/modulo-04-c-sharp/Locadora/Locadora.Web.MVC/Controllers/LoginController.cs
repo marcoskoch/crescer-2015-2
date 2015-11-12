@@ -1,7 +1,12 @@
 ﻿using EF;
+using Locadora.Dominio;
 using Locadora.Dominio.Repositorio;
+using Locadora.Dominio.Servicos;
+using Locadora.Web.MVC.Helpers;
 using Locadora.Web.MVC.Models;
+using Locadora.Web.MVC.Seguranca;
 using Locadora.Web.MVC.Seguranca.Filters;
+using Locadora.Web.MVC.Seguranca.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,26 +26,25 @@ namespace Locadora.Web.MVC.Controllers
             return View();
         }
 
-        public ActionResult Login(string usuario, string senha)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Login(LoginModel loginModel)
         {
-            IUsuarioRepositorio jogoRepositorio = new UsuarioRepositorio();
-            SenhaCriptografada seguraca = new SenhaCriptografada();
-            //TODO: validar usuario
-
-
-            var senhaCriptografada = seguraca.SaltedHash(usuario, senha);
-            var usuarioLogin = jogoRepositorio.BuscarPorEmail(usuario);
-            var permissoesLogin = usuarioLogin.Permissoes.Select(p => p.Nome).ToArray();
-
-            if (usuario == usuarioLogin.Email && senhaCriptografada == usuarioLogin.Senha)
+            if (ModelState.IsValid)
             {
-                var usuarioLogadoModel = new UsuarioLogado(usuarioLogin.Email, permissoesLogin);
+                ServicoAutenticacao servicoAutenticacao = FabricaDeModulos.CriarServicoAutenticacao();
 
-                FormsAuthentication.SetAuthCookie(usuario, true);
-                Session["USUARIO_LOGADO"] = usuarioLogadoModel;
+                Usuario usuarioAutenticado = servicoAutenticacao.BuscarPorAutenticacao(loginModel.Email, loginModel.Senha);
+
+                if (usuarioAutenticado != null)
+                {
+                    ControleDeSessao.CriarSessaoDeUsuario(usuarioAutenticado);
+                    return RedirectToAction("Index", "Home");
+                }
             }
 
-            return RedirectToAction("Index", "Home");
+            ModelState.AddModelError("INVALID_LOGIN", "Usuário ou senha inválidos.");
+            return View("Index", loginModel);
         }
     }
 }
