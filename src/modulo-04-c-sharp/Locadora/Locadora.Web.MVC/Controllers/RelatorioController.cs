@@ -1,6 +1,7 @@
 ﻿using EF;
 using Locadora.Dominio;
 using Locadora.Dominio.Repositorio;
+using Locadora.Web.MVC.Helpers;
 using Locadora.Web.MVC.Models;
 using Locadora.Web.MVC.Seguranca.Filters;
 using System;
@@ -38,7 +39,24 @@ namespace Locadora.Web.MVC.Controllers
 
             return View(model);
         }
-        
 
+        public JsonResult JogosAutocomplete(string term)
+        {
+            IList<Jogo> jogosEncontrados = null;
+            IJogoRepositorio jogoRepositorio = FabricaDeModulos.CriarJogoRepositorio();
+
+            if (string.IsNullOrEmpty(term))
+            {
+                jogosEncontrados = jogoRepositorio.BuscarTodos();
+            }
+            else
+            {
+                jogosEncontrados = jogoRepositorio.BuscarPorNome(term);
+            }
+
+            var json = jogosEncontrados.Select(x => new { label = x.Nome });
+
+            return Json(json, JsonRequestBehavior.AllowGet);
+        }
     }
 }
