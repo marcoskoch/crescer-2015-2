@@ -14,7 +14,7 @@ else
 
 @using (Html.BeginForm("Salvar", "Jogo", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
-    @Html.ValidationSummary(false)
+    @Html.ValidationSummary(true)
 
     @Html.HiddenFor(m => m.IdJogo)
 

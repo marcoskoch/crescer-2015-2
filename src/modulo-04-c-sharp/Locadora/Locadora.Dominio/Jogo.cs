@@ -20,7 +20,9 @@ namespace Locadora.Dominio
 
         public int? IdCliente { get; set; }
         public Cliente Cliente { get; set; }
-        
+
+        //public bool EstaLocado { get; }
+
         public Jogo()
         {
             this.Selo = Selo.Bronze;
@@ -32,9 +34,9 @@ namespace Locadora.Dominio
             this.Cliente = cliente;
         }
 
-        public void LocarPara(Cliente cliente)
+        public void LocarPara(int idCliente)
         {
-            this.Cliente = cliente;
+            this.IdCliente = idCliente;
         }
 
         public override string ToString()

@@ -44,7 +44,7 @@ namespace Locadora.Web.MVC.Controllers
 
             var jogoModel = new LocarJogoModel(jogoEncontrado)
             {
-                Preco = servicoLocacao.ValorLocacao(jogoEncontrado.Selo.ToString())
+                Preco = servicoLocacao.ValorLocacao(jogoEncontrado.Selo.ToString()) //usar proprio enum
             };
 
             return View(jogoModel);
@@ -53,9 +53,10 @@ namespace Locadora.Web.MVC.Controllers
         public ActionResult ConcluirLocacao(LocarJogoModel jogoLocar)
         {
             Jogo jogoLocado = jogoRepositorio.BuscarPorId(jogoLocar.IdJogo);
-            Cliente clienteJogo = clienteRepositorio.BuscarPorNome(jogoLocar.Cliente).FirstOrDefault();
+            Cliente clienteJogo = clienteRepositorio.BuscarPorNome(jogoLocar.Cliente/*usar id*/).FirstOrDefault();
 
-            jogoLocado.IdCliente = clienteJogo.Id;
+            jogoLocado.IdCliente = clienteJogo.Id; //Usar LocarPara no Jogo
+
             jogoRepositorio.Atualizar(jogoLocado);
 
             return RedirectToAction("Index", "Locacao");

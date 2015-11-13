@@ -7,22 +7,21 @@ namespace Locadora.Dominio.Test
     public class JogoTest
     {
         [TestMethod]
-        public void JogoADeveSerIgualJogoB()
-        {
-            //Jogo jogoA = new Jogo(id: 1, idClienteLocacao: null);
-            //Jogo jogoB = new Jogo(id: 1, idClienteLocacao: null);
-
-            //Assert.AreEqual(jogoA, jogoB);
-        }
-
-        [TestMethod]
         public void LocacaoParaClienteTemIdCorreto()
         {
             Jogo jogo = new Jogo();
 
-            jogo.LocarPara(new Cliente(id: 1));
+            jogo.IdCliente = 1;
 
-            Assert.AreEqual(1, jogo.Cliente);
+            Assert.AreEqual(1, jogo.IdCliente);
+        }
+
+        [TestMethod]
+        public void JogoComConstrutorVazio()
+        {
+            Jogo jogo = new Jogo();
+            Assert.AreEqual(Selo.Bronze, jogo.Selo);
         }
     }
 }
+
