@@ -30,7 +30,7 @@ namespace Locadora.Web.MVC.Controllers
 
             if (string.IsNullOrEmpty(nome))
             {
-                jogosEncontrados = jogoRepositorio.BuscarTodos();
+                jogosEncontrados = jogoRepositorio.JogosDisponiveis();
             }
             else
             {
@@ -49,7 +49,7 @@ namespace Locadora.Web.MVC.Controllers
 
             if (string.IsNullOrEmpty(term))
             {
-                jogosEncontrados = jogoRepositorio.BuscarTodos();
+                jogosEncontrados = jogoRepositorio.JogosDisponiveis();
             }
             else
             {

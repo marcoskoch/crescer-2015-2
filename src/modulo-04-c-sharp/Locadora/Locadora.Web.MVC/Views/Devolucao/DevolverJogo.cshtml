@@ -20,6 +20,7 @@
                     <li class="list-group-item">Categoria: @Model.Categoria <br /></li>
                     <li class="list-group-item">Selo: @Model.Selo <br /></li>
                     <li class="list-group-item">Cliente: @Model.Cliente<br /></li>
+                    <li class="list-group-item">Preço: @Model.Preco.ToString("C") <br /></li>
                 </ul>
                 @using (Html.BeginForm("ConcluirDevolucao", "Devolucao", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
                 {

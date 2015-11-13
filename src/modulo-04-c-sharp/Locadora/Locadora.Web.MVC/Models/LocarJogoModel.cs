@@ -11,7 +11,7 @@ namespace Locadora.Web.MVC.Models
         public int IdJogo { get; set; }
         public string Nome { get; private set; }
         public string Descricao { get; private set; }
-        public decimal Preco { get; private set; }
+        public decimal Preco { get; set; }
         public Categoria Categoria { get; private set; }
         public Selo Selo { get; private set; }
         public string UrlImagem { get; private set; }

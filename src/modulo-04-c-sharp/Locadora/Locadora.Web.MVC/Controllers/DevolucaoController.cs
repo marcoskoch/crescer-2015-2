@@ -1,6 +1,7 @@
 ﻿using EF;
 using Locadora.Dominio;
 using Locadora.Dominio.Repositorio;
+using Locadora.Dominio.Servicos;
 using Locadora.Web.MVC.Models;
 using Locadora.Web.MVC.Seguranca.Filters;
 using System;
@@ -30,10 +31,12 @@ namespace Locadora.Web.MVC.Controllers
         {
 
             Jogo jogoEncontrado = jogoRepositorio.BuscarPorId(id);
+            ServicoLocacaoValor servicoLocacao = new ServicoLocacaoValor();
 
             var jogoModel = new LocarJogoModel(jogoEncontrado)
             {
-                Cliente = clienteRepositorio.BuscarPorId(Convert.ToInt32(jogoEncontrado.IdCliente)).Nome
+                Cliente = clienteRepositorio.BuscarPorId(Convert.ToInt32(jogoEncontrado.IdCliente)).Nome,
+                Preco = servicoLocacao.ValorLocacao(jogoEncontrado.Selo.ToString())
             };
 
             return View(jogoModel);
