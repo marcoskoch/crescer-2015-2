@@ -36,7 +36,7 @@ textarea {
     width: 32px;
 }
 
-.editar-jogo{
+.editar-jogo, .locar-jogo{
     display: block;
     margin: 0 auto;
     width: 24px;
@@ -51,3 +51,31 @@ textarea {
 .table-jogos{
     margin-top: 30px;
 }
+
+.locar-jogo{
+    background: url('Images/videogame1.png');
+}
+
+.locar-jogo:hover{
+    background: url('Images/videogame10.png');
+}
+
+.Ouro, .Prata, .Bronze{
+    display: block;
+    margin: 0 auto;
+    width: 24px;
+    height: 24px;
+}
+
+.Ouro{
+    background: url('Images/ouro.png')
+}
+
+.Prata{
+    background: url('Images/prata.png')
+}
+
+.Bronze{
+    background: url('Images/bronze.png')
+}
+

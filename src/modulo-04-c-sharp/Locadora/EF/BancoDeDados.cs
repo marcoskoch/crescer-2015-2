@@ -77,13 +77,21 @@ namespace EF
             ToTable("Jogo");
             HasKey(p => p.Id);
             Property(p => p.Nome).IsRequired();
-            Property(p => p.Preco).IsRequired();
             Property(j => j.Categoria).IsRequired();
             Property(j => j.Selo).IsRequired();
             Property(p => p.Descricao).IsRequired();
             Property(p => p.TagVideo);
             Property(p => p.UrlImagem).HasColumnName("Url_Imagem");
-            HasOptional(p => p.Cliente).WithOptionalDependent().Map(m => m.MapKey("IdClienteLocacao"));
+            Property(p => p.IdCliente).HasColumnName("IdClienteLocacao");
+            HasOptional(p => p.Cliente).WithMany().HasForeignKey(p => p.IdCliente);
+
+            ////Adicionar campo na entidade
+            //Property(p => p.IdCliente);
+
+            ////Trocar isso:
+            //HasOptional(p => p.Cliente).WithOptionalDependent().Map(m => m.MapKey("IdClienteLocacao"));
+            ////Por isso:
+            //HasOptional(p => p.Cliente).WithMany().HasForeignKey(p => p.IdCliente);
         }
     }
 }

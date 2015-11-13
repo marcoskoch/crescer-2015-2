@@ -22,12 +22,22 @@ namespace EF
             return jogos;
         }
 
+        public IList<Jogo> JogosDisponiveis()
+        {
+            List<Jogo> jogos = new List<Jogo>();
+            using (var db = CriaBancoDeDados())
+            {
+                jogos = db.Jogo.Where(j => j.Cliente == null).ToList();
+            }
+            return jogos;
+        }
+
         public IList<Jogo> BuscarPorNome(string nome)
         {
             List<Jogo> jogos = new List<Jogo>();
             using (var db = CriaBancoDeDados())
             {
-                return db.Jogo.Where(p => p.Nome.Contains(nome)).ToList();
+                return db.Jogo.Where(p => p.Nome.Contains(nome) && p.Cliente == null).ToList();
             }
         }
 
@@ -69,6 +79,16 @@ namespace EF
                 bd.Jogo.Remove(bd.Jogo.Find(id));
                 return bd.SaveChanges();
             }
+        }
+
+        public IList<Jogo> JogosLocados()
+        {
+            List<Jogo> jogos = new List<Jogo>();
+            using (var db = CriaBancoDeDados())
+            {
+                jogos = db.Jogo.Where(j => j.Cliente != null).ToList();
+            }
+            return jogos;
         }
     }
 }

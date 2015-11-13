@@ -117,11 +117,18 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Images\bronze-medal.png" />
+    <Content Include="Content\Images\bronze.png" />
+    <Content Include="Content\Images\games.png" />
     <Content Include="Content\Images\gold-medal.png" />
+    <Content Include="Content\Images\images.jpg" />
     <Content Include="Content\Images\logo.png" />
+    <Content Include="Content\Images\ouro.png" />
     <Content Include="Content\Images\pencil43-hover.png" />
     <Content Include="Content\Images\pencil43.png" />
+    <Content Include="Content\Images\prata.png" />
     <Content Include="Content\Images\silver-medal.png" />
+    <Content Include="Content\Images\videogame1.png" />
+    <Content Include="Content\Images\videogame10.png" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
@@ -156,6 +163,7 @@
     <Content Include="Content\themes\base\tabs.css" />
     <Content Include="Content\themes\base\theme.css" />
     <Content Include="Content\themes\base\tooltip.css" />
+    <Content Include="Content\Upload\Mortal_kombat_snes.jpg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.js" />
@@ -179,8 +187,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
+    <Compile Include="Controllers\DevolucaoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JogoController.cs" />
+    <Compile Include="Controllers\LocacaoController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\RelatorioController.cs" />
     <Compile Include="Global.asax.cs">
@@ -190,6 +200,7 @@
     <Compile Include="Models\ClienteModel.cs" />
     <Compile Include="Models\DetalheJogoModel.cs" />
     <Compile Include="Models\JogoModel.cs" />
+    <Compile Include="Models\LocarJogoModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\RelatorioJogosDisponiveisModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -215,6 +226,10 @@
     <Content Include="Views\Cliente\Manter.cshtml" />
     <Content Include="Views\Jogo\Manter.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Locacao\Index.cshtml" />
+    <Content Include="Views\Locacao\LocarJogo.cshtml" />
+    <Content Include="Views\Devolucao\Index.cshtml" />
+    <Content Include="Views\Devolucao\DevolverJogo.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -224,7 +239,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Shared\Jogo\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EF\EF.csproj">

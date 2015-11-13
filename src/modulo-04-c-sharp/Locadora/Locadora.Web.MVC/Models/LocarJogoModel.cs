@@ -1,13 +1,12 @@
 ﻿using Locadora.Dominio;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
 namespace Locadora.Web.MVC.Models
 {
-    public class DetalheJogoModel
+    public class LocarJogoModel
     {
         public int IdJogo { get; set; }
         public string Nome { get; private set; }
@@ -17,9 +16,14 @@ namespace Locadora.Web.MVC.Models
         public Selo Selo { get; private set; }
         public string UrlImagem { get; private set; }
         public string TagVideo { get; private set; }
-        public Cliente Cliente { get; private set; }
+        public string Cliente { get; set; }
 
-        public DetalheJogoModel(Jogo jogo)
+        public LocarJogoModel()
+        {
+
+        }
+
+        public LocarJogoModel(Jogo jogo)
         {
             this.IdJogo = jogo.Id;
             this.Nome = jogo.Nome;
@@ -28,7 +32,7 @@ namespace Locadora.Web.MVC.Models
             this.Selo = jogo.Selo;
             this.UrlImagem = !String.IsNullOrEmpty(jogo.UrlImagem) ? jogo.UrlImagem : "http://cdn.123i.com.br/img/sem-foto-vertical.jpg";
             this.TagVideo = jogo.TagVideo;
-            this.Cliente = jogo.Cliente;
         }
+
     }
 }

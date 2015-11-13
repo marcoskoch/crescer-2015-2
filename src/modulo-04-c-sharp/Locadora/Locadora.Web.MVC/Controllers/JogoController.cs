@@ -14,6 +14,8 @@ namespace Locadora.Web.MVC.Controllers
     public class JogoController : BaseController
     {
         IJogoRepositorio jogoRepositorio = new JogoRepositorio();
+
+        [Autorizador(Roles = "OPERADOR")]
         public ActionResult DetalhesDoJogo(int id)
         {
             Jogo jogoEncontrado = jogoRepositorio.BuscarPorId(id);
@@ -34,7 +36,6 @@ namespace Locadora.Web.MVC.Controllers
                 {
                     IdJogo = jogoEncontrado.Id,
                     Nome = jogoEncontrado.Nome,
-                    Preco = jogoEncontrado.Preco,
                     Categoria = jogoEncontrado.Categoria,
                     Selo = jogoEncontrado.Selo,
                     Descricao = jogoEncontrado.Descricao,
@@ -60,7 +61,6 @@ namespace Locadora.Web.MVC.Controllers
                 {
                     Id = Convert.ToInt32(model.IdJogo),
                     Nome = model.Nome,
-                    Preco = model.Preco,
                     Categoria = model.Categoria,
                     Selo = model.Selo,
                     Descricao = model.Descricao,

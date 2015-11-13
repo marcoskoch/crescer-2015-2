@@ -16,12 +16,14 @@ namespace Locadora.Web.MVC.Controllers
     public class RelatorioController : BaseController
     {
         IJogoRepositorio jogoRepositorio = new JogoRepositorio();
+
+        [Autorizador(Roles = "OPERADOR")]
         public ActionResult JogosFiltradosPorId(int id)
         {
             return View();
         }
 
-        [Autorizador(Roles = "MASTER")]
+        [Autorizador(Roles = "OPERADOR")]
         public ActionResult JogosDisponiveis(string nome)
         {
             IList<Jogo> jogosEncontrados = null;

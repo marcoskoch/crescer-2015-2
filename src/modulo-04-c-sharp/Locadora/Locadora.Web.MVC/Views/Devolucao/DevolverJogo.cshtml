@@ -1,0 +1,46 @@
+﻿@model LocarJogoModel
+@{
+    ViewBag.Title = "Devolver Jogo";
+}
+
+<h2>DevolverJogo</h2>
+
+<br />
+<div class="panel panel-default">
+    <div class="panel-heading text-center"><h2>@Model.Nome</h2></div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-5 col-xs-12">
+                <img src="@Model.UrlImagem" alt="Imagem Jogo" class="imagem-detalhe-jogo img-thumbnail" />
+            </div>
+            <div class="col-lg-9 col-md-9 col-sm-7 col-xs-12">
+
+                <ul class="list-group">
+                    <li class="list-group-item">Descrição: @Model.Descricao<br /></li>
+                    <li class="list-group-item">Categoria: @Model.Categoria <br /></li>
+                    <li class="list-group-item">Selo: @Model.Selo <br /></li>
+                    <li class="list-group-item">Cliente: @Model.Cliente<br /></li>
+                </ul>
+                @using (Html.BeginForm("ConcluirDevolucao", "Devolucao", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                {
+                    @Html.ValidationSummary(false)
+
+                    @Html.HiddenFor(m => m.IdJogo)
+
+                    <div class="form-group">
+                        <div class="col-sm-offset-8 col-sm-4">
+                            <button type="submit" class="btn btn-primary">Devolver Jogo</button>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+}

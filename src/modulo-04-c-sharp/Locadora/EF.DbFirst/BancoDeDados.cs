@@ -44,7 +44,6 @@ namespace EF.DbFirst
             ToTable("Jogo");
             HasKey(p => p.Id);
             Property(p => p.Nome).IsRequired();
-            Property(p => p.Preco).IsRequired();
             Property(p => p.Descricao).IsRequired();
             Property(p => p.TagVideo);
             Property(p => p.UrlImagem).HasColumnName("Url_Imagem");

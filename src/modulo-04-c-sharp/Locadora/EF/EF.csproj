@@ -50,10 +50,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BancoDeDados.cs" />
+    <Compile Include="ClienteRepositorio.cs" />
     <Compile Include="JogoRepositorio.cs" />
     <Compile Include="Migrations\201511110159553_Initial.cs" />
     <Compile Include="Migrations\201511110159553_Initial.Designer.cs">
       <DependentUpon>201511110159553_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201511121553584_AtualizacaoJogo.cs" />
+    <Compile Include="Migrations\201511121553584_AtualizacaoJogo.Designer.cs">
+      <DependentUpon>201511121553584_AtualizacaoJogo.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -72,6 +77,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201511110159553_Initial.resx">
       <DependentUpon>201511110159553_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511121553584_AtualizacaoJogo.resx">
+      <DependentUpon>201511121553584_AtualizacaoJogo.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -11,9 +11,6 @@ namespace Locadora.Web.MVC.Models
         public List<JogoDisponivelModel> Jogos { get; private set; }
 
         public int QuantidadeTotalDeJogos { get; private set; }
-        public decimal ValorMedio { get; private set; }
-        public JogoDisponivelModel JogoMaisCaro { get; private set; }
-        public JogoDisponivelModel JogoMaisBarato { get; private set; }
 
         public RelatorioJogosDisponiveisModel(IList<Jogo> jogosDisponiveis)
         {
@@ -28,12 +25,6 @@ namespace Locadora.Web.MVC.Models
                 }
 
                 this.QuantidadeTotalDeJogos = jogosDisponiveis.Count;
-                this.ValorMedio = jogosDisponiveis.Average(j => j.Preco);
-                decimal maiorPreco = jogosDisponiveis.Max(j => j.Preco);
-                decimal menorPreco = jogosDisponiveis.Min(j => j.Preco);
-
-                this.JogoMaisCaro = this.Jogos.First(j => j.Preco == maiorPreco);
-                this.JogoMaisBarato = this.Jogos.First(j => j.Preco == menorPreco);
             }
             
         }     
@@ -43,7 +34,6 @@ namespace Locadora.Web.MVC.Models
     {
         public int IdJogo { get; private set; }
         public string Nome { get; private set; }
-        public decimal Preco { get; private set; }
         public Categoria Categoria { get; private set; }
         public Selo Selo { get; private set; }
 
@@ -51,7 +41,6 @@ namespace Locadora.Web.MVC.Models
         {
             this.IdJogo = jogo.Id;
             this.Nome = jogo.Nome;
-            this.Preco = jogo.Preco;
             this.Categoria = jogo.Categoria;
             this.Selo = jogo.Selo;
         }

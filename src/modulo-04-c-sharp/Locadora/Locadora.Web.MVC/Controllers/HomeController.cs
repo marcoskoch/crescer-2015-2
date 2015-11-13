@@ -9,7 +9,7 @@ namespace Locadora.Web.MVC.Controllers
 {
     public class HomeController : Controller
     {
-        [Autorizador(Roles = "MASTER")]
+        [Autorizador(Roles = "OPERADOR")]
         public ActionResult Index()
         {
             ViewBag.NomeUsuario = Session["NOME_USUARIO"];

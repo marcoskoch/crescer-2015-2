@@ -1,4 +1,4 @@
-﻿@model Locadora.Web.MVC.Models.DetalheJogoModel
+﻿    @model Locadora.Web.MVC.Models.DetalheJogoModel
 @{
     ViewBag.Title = "DetalhesDoJogo";
 }
@@ -9,15 +9,15 @@
     <div class="panel-heading text-center"><h2>@Model.Nome</h2></div>
     <div class="panel-body">
         <div class="row">
-            <div class="col-lg-3 col-md-3 col-sm-5 col-xs-12">
+            <div class="col-lg-3 col-md-3 col-sm-5 col-xs-12 img-jogo">
                 <img src="@Model.UrlImagem" alt="Imagem Jogo" class="imagem-detalhe-jogo img-thumbnail" />
             </div>
             <div class="col-lg-9 col-md-9 col-sm-7 col-xs-12">
 
                 <ul class="list-group">
+                    <li class="list-group-item">Descrição: @Model.Descricao<br /></li>
                     <li class="list-group-item">Categoria: @Model.Categoria <br /></li>
-                    <li class="list-group-item">Preço: @Model.Preco.ToString("c") <br /></li>
-                    @*<li class="list-group-item">Selo: @Html.Partial("~/Views/Shared/Jogo/_SeloJogo.cshtml", Model.Selo)</li>*@
+                    <li class="list-group-item">Selo: @Model.Selo <br /></li>                
                 </ul>
             </div>
         </div>
