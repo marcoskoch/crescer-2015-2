@@ -8,20 +8,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.cwi.crescer.jdbc.ConnectionFactory;
-import br.com.cwi.crescer.model.Cliente;
+import br.com.cwi.crescer.model.Pedido;
 
-public class ClienteDao {
+public class PedidoDao {
 
-    public void insert(Cliente cliente) throws SQLException {
+    public void insert(Pedido pedido) throws Exception {
         try (Connection conexao = new ConnectionFactory().getConnection()) {
 
             StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.append(" insert into cliente ");
-            stringBuilder.append("(idCliente, nmCliente, nrCpf) values(cliente_seq.NEXTVAL,?,?) ");
+            stringBuilder.append(" insert into pedido ");
+            stringBuilder.append("(idPedido, idCliente, dsPedido) values(cliente_seq.NEXTVAL,?,?) ");
 
             PreparedStatement statement = conexao.prepareStatement(stringBuilder.toString());
-            statement.setString(1, cliente.getNmCliente());
-            statement.setString(2, cliente.getNrCpf());
+            statement.setLong(1, pedido.getIdCliente());
+            statement.setString(2, pedido.getDsPedido());
 
             statement.execute();
 
@@ -30,32 +30,34 @@ public class ClienteDao {
         }
     }
 
-    public List<Cliente> listAll() throws SQLException {
-        List<Cliente> lista = new ArrayList<Cliente>();
+    public List<Pedido> listAll() throws SQLException {
+
+        List<Pedido> lista = new ArrayList<Pedido>();
         try (Connection conexao = new ConnectionFactory().getConnection()) {
             StringBuilder query = new StringBuilder();
-            query.append(" select idCliente, nmCliente, nrCpf from Cliente");
+            query.append(" select idPedido, idCliente, dsPedido from Pedido");
             PreparedStatement statement = conexao.prepareStatement(query.toString());
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
-                Cliente cliente = new Cliente();
-                cliente.setIdCliente(resultSet.getLong(1));
-                cliente.setNmCliente(resultSet.getString(2));
-                cliente.setNrCpf(resultSet.getString(3));
-                lista.add(cliente);
+                Pedido pedido = new Pedido();
+                pedido.setIdPedido(resultSet.getLong(1));
+                pedido.setIdCliente(resultSet.getLong(2));
+                pedido.setDsPedido(resultSet.getString(3));
+                lista.add(pedido);
             }
 
         } catch (SQLException e) {
             throw e;
         }
         return lista;
+
     }
 
     public void delete(Long id) throws SQLException {
         try (Connection conexao = new ConnectionFactory().getConnection()) {
 
             StringBuilder query = new StringBuilder();
-            query.append("delete from cliente where idcliente = ?");
+            query.append("delete from pedido where pedido = ?");
             PreparedStatement statement = conexao.prepareStatement(query.toString());
             statement.setLong(1, id);
             statement.execute();
@@ -65,20 +67,20 @@ public class ClienteDao {
         }
     }
 
-    public Cliente load(long id) throws SQLException {
-        Cliente cliente = new Cliente();
+    public Pedido load(long id) throws SQLException {
+        Pedido pedido = new Pedido();
         try (Connection conexao = new ConnectionFactory().getConnection()) {
 
             StringBuilder query = new StringBuilder();
-            query.append("select idcliente, nmcliente, nrcpf from cliente where idcliente = ?");
+            query.append("select idPedido, idCliente, dsPedido from Pedido where idPedido = ?");
             PreparedStatement statement = conexao.prepareStatement(query.toString());
             statement.setLong(1, id);
             ResultSet resultSet = statement.executeQuery();
 
             if (resultSet.next()) {
-                cliente.setIdCliente(resultSet.getLong(1));
-                cliente.setNmCliente(resultSet.getString(2));
-                cliente.setNrCpf(resultSet.getString(3));
+                pedido.setIdPedido(resultSet.getLong(1));
+                pedido.setIdCliente(resultSet.getLong(2));
+                pedido.setDsPedido(resultSet.getString(3));
             } else {
                 throw new RuntimeException("registro não encontrada");
             }
@@ -86,19 +88,19 @@ public class ClienteDao {
         } catch (SQLException e) {
             throw e;
         }
-        return cliente;
+        return pedido;
     }
 
-    public void update(Cliente cliente) throws SQLException {
+    public void update(Pedido pedido) throws SQLException {
         try (Connection conexao = new ConnectionFactory().getConnection()) {
 
             StringBuilder query = new StringBuilder();
-            query.append("update cliente set nmcliente = ?, nrcpf = ? where idcliente = ?");
+            query.append("update pedido set idcliente = ?, dspedido = ? where idpedido = ?");
 
             PreparedStatement statement = conexao.prepareStatement(query.toString());
-            statement.setString(1, cliente.getNmCliente());
-            statement.setString(2, cliente.getNrCpf());
-            statement.setLong(3, cliente.getIdCliente());
+            statement.setLong(1, pedido.getIdCliente());
+            statement.setString(2, pedido.getDsPedido());
+            statement.setLong(3, pedido.getIdPedido());
             statement.execute();
 
         } catch (SQLException e) {
@@ -106,36 +108,35 @@ public class ClienteDao {
         }
     }
 
-    public List<Cliente> find(Cliente cliente) throws SQLException {
-        List<Cliente> lista = new ArrayList<Cliente>();
+    public List<Pedido> find(Pedido filter) throws SQLException {
+        List<Pedido> lista = new ArrayList<Pedido>();
         try (Connection conexao = new ConnectionFactory().getConnection()) {
 
             StringBuilder query = new StringBuilder();
-            query.append("select idcliente, nmcliente, nrcpf from cliente where 1 = 1");
-            if (cliente.getNmCliente() != null) {
-                query.append("and nmcliente = ?");
+            query.append("select idPedido, idCliente, dsPedido from Pedido where 1 = 1");
+            if (filter.getIdCliente() != null) {
+                query.append("and idcliente = ?");
             }
-            if (cliente.getNrCpf() != null) {
-                query.append("and nrcpf = ?");
+            if (filter.getDsPedido() != null) {
+                query.append("and dspedido = ?");
             }
-
 
             PreparedStatement statement = conexao.prepareStatement(query.toString());
-            if (cliente.getNmCliente() != null) {
-                statement.setString(1, cliente.getNmCliente());
-                statement.setString(2, cliente.getNrCpf());
+            if (filter.getIdCliente() != null) {
+                statement.setLong(1, filter.getIdCliente());
+                statement.setString(2, filter.getDsPedido());
             } else {
-                statement.setString(1, cliente.getNrCpf());
+                statement.setString(1, filter.getDsPedido());
             }
 
             ResultSet resultSet = statement.executeQuery();
 
             while (resultSet.next()) {
-                Cliente clienteEncontrado = new Cliente();
-                clienteEncontrado.setIdCliente(resultSet.getLong(1));
-                clienteEncontrado.setNmCliente(resultSet.getString(2));
-                clienteEncontrado.setNrCpf(resultSet.getString(3));
-                lista.add(cliente);
+                Pedido pedidoEncontrado = new Pedido();
+                pedidoEncontrado.setIdPedido(resultSet.getLong(1));
+                pedidoEncontrado.setIdCliente(resultSet.getLong(2));
+                pedidoEncontrado.setDsPedido(resultSet.getString(3));
+                lista.add(pedidoEncontrado);
             }
 
         } catch (SQLException e) {
