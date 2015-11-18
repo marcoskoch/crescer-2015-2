@@ -67,14 +67,14 @@ public class PedidoDao {
         }
     }
 
-    public Pedido load(long id) throws SQLException {
+    public Pedido load(long idCliente) throws SQLException {
         Pedido pedido = new Pedido();
         try (Connection conexao = new ConnectionFactory().getConnection()) {
 
             StringBuilder query = new StringBuilder();
             query.append("select idPedido, idCliente, dsPedido from Pedido where idPedido = ?");
             PreparedStatement statement = conexao.prepareStatement(query.toString());
-            statement.setLong(1, id);
+            statement.setLong(1, idCliente);
             ResultSet resultSet = statement.executeQuery();
 
             if (resultSet.next()) {
@@ -143,6 +143,30 @@ public class PedidoDao {
             throw e;
         }
         return lista;
+    }
+
+    public List<Pedido> buscarPedidosCliente(Long id) throws SQLException {
+
+        List<Pedido> lista = new ArrayList<Pedido>();
+        try (Connection conexao = new ConnectionFactory().getConnection()) {
+            StringBuilder query = new StringBuilder();
+            query.append(" select idPedido, idCliente, dsPedido from Pedido where idcliente = ?");
+            PreparedStatement statement = conexao.prepareStatement(query.toString());
+            statement.setLong(1, id);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                Pedido pedido = new Pedido();
+                pedido.setIdPedido(resultSet.getLong(1));
+                pedido.setIdCliente(resultSet.getLong(2));
+                pedido.setDsPedido(resultSet.getString(3));
+                lista.add(pedido);
+            }
+
+        } catch (SQLException e) {
+            throw e;
+        }
+        return lista;
+
     }
 
 }
