@@ -1,20 +1,26 @@
 package br.com.cwi.crescer;
 
 import java.sql.SQLException;
+import java.util.List;
 
-import br.com.cwi.crescer.dao.ClienteDao;
-import br.com.cwi.crescer.model.Cliente;
+import br.com.cwi.crescer.dao.ServicoDao;
+import br.com.cwi.crescer.model.Servico;
 
 public class Apliacacao {
 
     public static void main(String[] args) throws SQLException {
 
-        Cliente cliente = new Cliente();
-        cliente.setIdCliente(15);
-        cliente.setNmCliente("Marcos");
-        cliente.setNrCpf("54654654654");
-        ClienteDao clienteDao = new ClienteDao();
-        clienteDao.adiciona(cliente);
+        Servico servico = new Servico();
+        servico.setIdServico(2);
+        servico.setDsServico("Secagem de Roupa");
+
+        ServicoDao servicoDao = new ServicoDao();
+        servicoDao.insert(servico);
+
+        List<Servico> lista = servicoDao.listAll();
+        for (Servico service : lista) {
+            System.out.println(service.getDsServico());
+        }
 
         /*
          * final int FECHAR = 0;
