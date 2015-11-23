@@ -1,7 +1,10 @@
 package br.com.cwi.crescer.domain;
 
+import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,7 +16,7 @@ import javax.persistence.Table;
 @SequenceGenerator(name = Cliente.SEQUENCE_NAME, sequenceName = Cliente.SEQUENCE_NAME)
 public class Cliente {
 
-    public static final String SEQUENCE_NAME = "SEQ_CLIENTE";
+    public static final String SEQUENCE_NAME = "SEQ_Cliente";
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = SEQUENCE_NAME)
@@ -21,9 +24,11 @@ public class Cliente {
     private Long idCliente;
 
     @Column(name = "Nome", length = 70)
+    @Basic(optional = false)
     private String nome;
 
-    @Column(name = "Cpf", length = 11)
+    @Column(name = "CPF", length = 11)
+    @Basic(optional = false)
     private String cpf;
 
     @Column(name = "Email", length = 100)
@@ -38,11 +43,16 @@ public class Cliente {
     @Column(name = "IDCidade")
     private Long idCidade;
 
-    @Column(name = "Cep")
-    private int cep;
+    @Column(name = "CEP")
+    private Long cep;
 
+    @Enumerated(EnumType.ORDINAL)
     @Column(name = "Situacao", length = 1)
-    private char situacao;
+    private SituacaoCliente situacao;
+
+    public static enum SituacaoCliente {
+        ATIVO, INATIVO
+    }
 
     public Long getIdCliente() {
         return idCliente;
@@ -100,20 +110,19 @@ public class Cliente {
         this.idCidade = idCidade;
     }
 
-    public int getCep() {
+    public Long getCep() {
         return cep;
     }
 
-    public void setCep(int cep) {
+    public void setCep(Long cep) {
         this.cep = cep;
     }
 
-    public char getSituacao() {
+    public SituacaoCliente getSituacao() {
         return situacao;
     }
 
-    public void setSituacao(char situacao) {
+    public void setSituacao(SituacaoCliente situacao) {
         this.situacao = situacao;
     }
-
 }

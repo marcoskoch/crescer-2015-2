@@ -1,21 +1,27 @@
 package br.com.cwi.crescer.domain;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
+import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "Pedido")
 @SequenceGenerator(name = Pedido.SEQUENCE_NAME, sequenceName = Pedido.SEQUENCE_NAME)
 public class Pedido {
 
-    public static final String SEQUENCE_NAME = "SEQ_PEDIDO";
+    public static final String SEQUENCE_NAME = "SEQ_Pedido";
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = SEQUENCE_NAME)
@@ -23,19 +29,29 @@ public class Pedido {
     private Long idPedido;
 
     @Column(name = "IDCliente")
+    @Basic(optional = false)
     private Long idCliente;
 
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "DATAInclusao")
+    @Basic(optional = false)
     private Date dataInclusao;
 
+    @Temporal(TemporalType.DATE)
     @Column(name = "DATAEntrega")
     private Date dataEntrega;
 
     @Column(name = "Valor")
-    private Double valor;
+    @Basic(optional = false)
+    private BigDecimal valor;
 
+    @Enumerated(EnumType.ORDINAL)
     @Column(name = "Situacao", length = 1)
-    private char situacao;
+    private SituacaoPedido situacao;
+
+    public static enum SituacaoPedido {
+        PENDENTE, PROCESSANDO, PROCESSADO, ENCERRADO, CANCELADO
+    }
 
     public Long getIdPedido() {
         return idPedido;
@@ -69,20 +85,19 @@ public class Pedido {
         this.dataEntrega = dataEntrega;
     }
 
-    public Double getValor() {
+    public BigDecimal getValor() {
         return valor;
     }
 
-    public void setValor(Double valor) {
+    public void setValor(BigDecimal valor) {
         this.valor = valor;
     }
 
-    public char getSituacao() {
+    public SituacaoPedido getSituacao() {
         return situacao;
     }
 
-    public void setSituacao(char situacao) {
+    public void setSituacao(SituacaoPedido situacao) {
         this.situacao = situacao;
     }
-
 }

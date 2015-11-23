@@ -1,5 +1,8 @@
 package br.com.cwi.crescer.domain;
 
+import java.math.BigDecimal;
+
+import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,7 +16,7 @@ import javax.persistence.Table;
 @SequenceGenerator(name = Produto.SEQUENCE_NAME, sequenceName = Produto.SEQUENCE_NAME)
 public class Produto {
 
-    public static final String SEQUENCE_NAME = "SEQ_PRODUTO";
+    public static final String SEQUENCE_NAME = "SEQ_Produto";
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = SEQUENCE_NAME)
@@ -21,13 +24,16 @@ public class Produto {
     private Long idProduto;
 
     @Column(name = "IDServico")
+    @Basic(optional = false)
     private Long idServico;
 
     @Column(name = "IDMaterial")
-    private Long idMaterial;
+    @Basic(optional = false)
+    private Long idMAterial;
 
     @Column(name = "Valor")
-    private Double valor;
+    @Basic(optional = false)
+    private BigDecimal valor;
 
     public Long getIdProduto() {
         return idProduto;
@@ -45,20 +51,19 @@ public class Produto {
         this.idServico = idServico;
     }
 
-    public Long getIdMaterial() {
-        return idMaterial;
+    public Long getIdMAterial() {
+        return idMAterial;
     }
 
-    public void setIdMaterial(Long idMaterial) {
-        this.idMaterial = idMaterial;
+    public void setIdMAterial(Long idMAterial) {
+        this.idMAterial = idMAterial;
     }
 
-    public Double getValor() {
+    public BigDecimal getValor() {
         return valor;
     }
 
-    public void setValor(Double valor) {
+    public void setValor(BigDecimal valor) {
         this.valor = valor;
     }
-
 }

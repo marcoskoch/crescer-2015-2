@@ -1,5 +1,6 @@
 package br.com.cwi.crescer.domain;
 
+import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,7 +14,7 @@ import javax.persistence.Table;
 @SequenceGenerator(name = Material.SEQUENCE_NAME, sequenceName = Material.SEQUENCE_NAME)
 public class Material {
 
-    public static final String SEQUENCE_NAME = "SEQ_MATERIAL";
+    public static final String SEQUENCE_NAME = "SEQ_Material";
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = SEQUENCE_NAME)
@@ -21,6 +22,7 @@ public class Material {
     private Long idMaterial;
 
     @Column(name = "Descricao", length = 30)
+    @Basic(optional = false)
     private String descricao;
 
     public Long getIdMaterial() {
@@ -38,5 +40,4 @@ public class Material {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
-
 }
