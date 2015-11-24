@@ -12,6 +12,9 @@ public class Endereco {
     @Column(name = "Bairro", length = 50)
     private String bairro;
 
+    @Column(name = "CEP")
+    private Long cep;
+
     public String getEndereco() {
         return endereco;
     }
@@ -26,6 +29,14 @@ public class Endereco {
 
     public void setBairro(String bairro) {
         this.bairro = bairro;
+    }
+
+    public Long getCep() {
+        return cep;
+    }
+
+    public void setCep(Long cep) {
+        this.cep = cep;
     }
 
 }

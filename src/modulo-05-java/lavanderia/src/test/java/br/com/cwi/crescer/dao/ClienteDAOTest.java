@@ -23,6 +23,7 @@ public class ClienteDAOTest extends AbstractInfrastructureTest {
         Assert.assertNotNull(cliente.getPedidos());
         Assert.assertNotNull(cliente.getEndereco().getBairro());
         Assert.assertNotNull(cliente.getEndereco().getEndereco());
+        Assert.assertNotNull(cliente.getEndereco().getCep());
     }
 
     @Test

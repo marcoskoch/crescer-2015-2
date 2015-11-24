@@ -47,9 +47,6 @@ public class Cliente {
     @JoinColumn(name = "IDCidade")
     private Cidade cidade;
 
-    @Column(name = "CEP")
-    private Long cep;
-
     @Enumerated(EnumType.ORDINAL)
     @Column(name = "Situacao", length = 1)
     private SituacaoCliente situacao;
@@ -107,14 +104,6 @@ public class Cliente {
 
     public void setCidade(Cidade cidade) {
         this.cidade = cidade;
-    }
-
-    public Long getCep() {
-        return cep;
-    }
-
-    public void setCep(Long cep) {
-        this.cep = cep;
     }
 
     public SituacaoCliente getSituacao() {
