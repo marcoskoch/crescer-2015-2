@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -39,11 +40,8 @@ public class Cliente {
     @Column(name = "Email", length = 100)
     private String email;
 
-    @Column(name = "Endereco", length = 50)
-    private String endereco;
-
-    @Column(name = "Bairro", length = 50)
-    private String bairro;
+    @Embedded
+    private Endereco endereco;
 
     @ManyToOne
     @JoinColumn(name = "IDCidade")
@@ -95,20 +93,12 @@ public class Cliente {
         this.email = email;
     }
 
-    public String getEndereco() {
+    public Endereco getEndereco() {
         return endereco;
     }
 
-    public void setEndereco(String endereco) {
+    public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
-    }
-
-    public String getBairro() {
-        return bairro;
-    }
-
-    public void setBairro(String bairro) {
-        this.bairro = bairro;
     }
 
     public Cidade getCidade() {
