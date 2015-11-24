@@ -11,8 +11,6 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -43,9 +41,6 @@ public class Cliente {
     @Embedded
     private Endereco endereco;
 
-    @ManyToOne
-    @JoinColumn(name = "IDCidade")
-    private Cidade cidade;
 
     @Enumerated(EnumType.ORDINAL)
     @Column(name = "Situacao", length = 1)
@@ -96,14 +91,6 @@ public class Cliente {
 
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
-    }
-
-    public Cidade getCidade() {
-        return cidade;
-    }
-
-    public void setCidade(Cidade cidade) {
-        this.cidade = cidade;
     }
 
     public SituacaoCliente getSituacao() {

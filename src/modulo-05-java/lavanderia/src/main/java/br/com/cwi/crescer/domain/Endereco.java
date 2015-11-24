@@ -2,6 +2,8 @@ package br.com.cwi.crescer.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Embeddable
 public class Endereco {
@@ -14,6 +16,10 @@ public class Endereco {
 
     @Column(name = "CEP")
     private Long cep;
+
+    @ManyToOne
+    @JoinColumn(name = "IDCidade")
+    private Cidade cidade;
 
     public String getEndereco() {
         return endereco;
@@ -37,6 +43,14 @@ public class Endereco {
 
     public void setCep(Long cep) {
         this.cep = cep;
+    }
+
+    public Cidade getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(Cidade cidade) {
+        this.cidade = cidade;
     }
 
 }
