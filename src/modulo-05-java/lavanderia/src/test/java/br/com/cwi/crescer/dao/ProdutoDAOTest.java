@@ -16,6 +16,8 @@ public class ProdutoDAOTest extends AbstractInfrastructureTest {
     public void deveBuscarProdutoPorId() throws Exception {
         Produto produto = produtoDAO.findById(1L);
         Assert.assertNotNull(produto);
+        Assert.assertNotNull(produto.getMaterial());
+        Assert.assertNotNull(produto.getServico());
     }
 
 }

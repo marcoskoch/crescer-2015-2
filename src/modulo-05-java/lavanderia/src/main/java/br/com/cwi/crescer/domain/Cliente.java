@@ -1,5 +1,7 @@
 package br.com.cwi.crescer.domain;
 
+import java.util.List;
+
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,6 +10,9 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -40,8 +45,9 @@ public class Cliente {
     @Column(name = "Bairro", length = 50)
     private String bairro;
 
-    @Column(name = "IDCidade")
-    private Long idCidade;
+    @ManyToOne
+    @JoinColumn(name = "IDCidade")
+    private Cidade cidade;
 
     @Column(name = "CEP")
     private Long cep;
@@ -49,6 +55,9 @@ public class Cliente {
     @Enumerated(EnumType.ORDINAL)
     @Column(name = "Situacao", length = 1)
     private SituacaoCliente situacao;
+
+    @OneToMany(mappedBy = "cliente")
+    private List<Pedido> pedidos;
 
     public static enum SituacaoCliente {
         ATIVO, INATIVO
@@ -102,12 +111,12 @@ public class Cliente {
         this.bairro = bairro;
     }
 
-    public Long getIdCidade() {
-        return idCidade;
+    public Cidade getCidade() {
+        return cidade;
     }
 
-    public void setIdCidade(Long idCidade) {
-        this.idCidade = idCidade;
+    public void setCidade(Cidade cidade) {
+        this.cidade = cidade;
     }
 
     public Long getCep() {
@@ -124,5 +133,13 @@ public class Cliente {
 
     public void setSituacao(SituacaoCliente situacao) {
         this.situacao = situacao;
+    }
+
+    public List<Pedido> getPedidos() {
+        return pedidos;
+    }
+
+    public void setPedidos(List<Pedido> pedidos) {
+        this.pedidos = pedidos;
     }
 }
