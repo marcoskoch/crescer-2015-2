@@ -4,13 +4,14 @@ import java.util.List;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
-import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -38,8 +39,18 @@ public class Cliente {
     @Column(name = "Email", length = 100)
     private String email;
 
-    @Embedded
-    private Endereco endereco;
+    @Column(name = "Endereco", length = 50)
+    private String endereco;
+
+    @Column(name = "Bairro", length = 50)
+    private String bairro;
+
+    @Column(name = "CEP")
+    private Long cep;
+
+    @ManyToOne
+    @JoinColumn(name = "IDCidade")
+    private Cidade cidade;
 
 
     @Enumerated(EnumType.ORDINAL)
@@ -85,14 +96,6 @@ public class Cliente {
         this.email = email;
     }
 
-    public Endereco getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(Endereco endereco) {
-        this.endereco = endereco;
-    }
-
     public SituacaoCliente getSituacao() {
         return situacao;
     }
@@ -108,4 +111,37 @@ public class Cliente {
     public void setPedidos(List<Pedido> pedidos) {
         this.pedidos = pedidos;
     }
+
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
+
+    public String getBairro() {
+        return bairro;
+    }
+
+    public void setBairro(String bairro) {
+        this.bairro = bairro;
+    }
+
+    public Long getCep() {
+        return cep;
+    }
+
+    public void setCep(Long cep) {
+        this.cep = cep;
+    }
+
+    public Cidade getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(Cidade cidade) {
+        this.cidade = cidade;
+    }
+
 }

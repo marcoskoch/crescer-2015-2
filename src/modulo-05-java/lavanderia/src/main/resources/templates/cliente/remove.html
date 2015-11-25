@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" th:href="@{/bootstrap/css/bootstrap.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{/css/default.css}" />
+<title>Visualizar</title>
+</head>
+
+<body>
+	<div class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target=".navbar-collapse">
+					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a th:href="@{/}" class="navbar-brand">Lavanderia</a>
+			</div>
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					<li><a th:href="@{/clientes}">Clientes</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+
+
+	<div class="container">
+
+		<div class="starter-template">
+			<h2>Deseja mesmo remover?</h2>
+		</div>
+
+		<form class="form-horizontal col-sm-5" role="form"
+			th:action="@{/clientes/remover}" th:object="${cliente}" method="post">
+
+			<input th:field="*{id}" type="hidden" />
+
+			<div class="form-group">
+				<label class="col-sm-2 control-label">Nome: </label>
+				<div class="col-sm-10">
+					<input class="form-control" th:field="*{nome}" type="text"
+						disabled="true" />
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-sm-2 control-label">CPF: </label>
+				<div class="col-sm-10">
+					<input class="form-control" th:field="*{cpf}" type="text"
+						disabled="true" />
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-sm-2 control-label">Email: </label>
+				<div class="col-sm-10">
+					<input class="form-control" th:field="*{email}" type="text"
+						disabled="true" />
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label class="col-sm-2 control-label">Endereco: </label>
+				<div class="col-sm-10">
+					<input class="form-control" th:field="*{endereco}" type="text" disabled="true"/>
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label class="col-sm-2 control-label">Bairro: </label>
+				<div class="col-sm-10">
+					<input class="form-control" th:field="*{bairro}" type="text" disabled="true"/>
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label class="col-sm-2 control-label">Cep: </label>
+				<div class="col-sm-10">
+					<input class="form-control" th:field="*{cep}" type="text" disabled="true"/>
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label class="col-sm-2 control-label">Cidade: </label>
+				<div class="col-sm-10">
+					<select class="form-control" th:field="*{idCidade}" disabled="true">
+						<option th:each="c : ${cidades}" th:text="${c.nome}"
+							th:value="${c.idCidade}">[option]</option>
+					</select>
+				</div>
+			</div>
+
+			<a class="btn btn-primary pull-left" th:href="@{/clientes}">Cancelar</a>
+			<button class="btn btn-primary pull-right" type="submit">Remover</button>
+
+		</form>
+
+	</div>
+
+
+</body>
+
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-1.11.3.js"></script>
+<script type="text/javascript" th:src="@{/bootstrap/js/bootstrap.js}"></script>
+
+</html>
