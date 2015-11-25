@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css"
+	th:href="@{/bootstrap/css/bootstrap.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{/css/default.css}" />
+<title layout:title-pattern="$CONTENT_TITLE - $DECORATOR_TITLE">Lavanderia</title>
+</head>
+<body>
+	<div class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target=".navbar-collapse">
+					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a th:href="@{/}" class="navbar-brand">Lavanderia</a>
+			</div>
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					<li><a th:href="@{/clientes}">Clientes</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	
+	<div class="container" layout:fragment="content">
+	</div>
+	
+	
+</body>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.js"></script>
+<script type="text/javascript" th:src="@{/bootstrap/js/bootstrap.js}"></script>
+<div layout:fragment="custom-script">
+</div>
+</html>

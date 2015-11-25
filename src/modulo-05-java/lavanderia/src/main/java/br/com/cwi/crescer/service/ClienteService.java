@@ -67,4 +67,10 @@ public class ClienteService {
         clienteDAO.delete(dto.getId());
     }
 
+    public void desativar(ClienteDTO dto) {
+        Cliente entity = clienteDAO.findById(dto.getId());
+        entity.setSituacao(SituacaoCliente.INATIVO);
+        clienteDAO.save(entity);
+    }
+
 }
