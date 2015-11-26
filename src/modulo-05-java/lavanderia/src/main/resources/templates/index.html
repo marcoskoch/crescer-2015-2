@@ -9,6 +9,12 @@
 		<div class="starter-template">
 			<h1 class="text-center" th:text="${mensagem}">Index</h1>
 		</div>
+		<div th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" >
+	        Bem vindo admin <span sec:authentication="name"></span>
+	    </div>
+	    <div th:if="${#authorization.expression('hasRole(''ROLE_USER'')')}" >
+	        Bem vindo usuário <span sec:authentication="name"></span>
+	    </div>
 	</div>
 	
 </body>
