@@ -16,23 +16,20 @@
 			<table class="table table-striped table-bordered table-hover">
 
 				<tr>
-					<th>Id</th>
 					<th>Nome</th>
 					<th>CPF</th>
-					<th>Email</th>
 					<th>Visualizar</th>
 					<th>Editar</th>
 					<th>Remover</th>
+					<th>Situação</th>
 				</tr>
 				<tr th:each="cliente : ${clientes}">
-					<td th:text="${cliente.id}"><a
-						th:href="@{|/clientes/${cliente.id}|}"></a></td>
 					<td th:text="${cliente.nome}"></td>
 					<td th:text="${cliente.cpf}"></td>
-					<td th:text="${cliente.email}"></td>
 					<td><a th:href="${ '/clientes/' + cliente.id}">Visualizar</a></td>
 					<td><a th:href="${'/clientes/editar/' + cliente.id}">Editar</a></td>
 					<td><a th:href="${'/clientes/remover/' + cliente.id}">Remover</a></td>
+					<td th:text="${cliente.situacao}"></td>
 				</tr>
 			</table>
 

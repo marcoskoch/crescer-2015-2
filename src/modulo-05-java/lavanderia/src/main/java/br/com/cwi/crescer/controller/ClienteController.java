@@ -5,6 +5,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -34,7 +35,7 @@ public class ClienteController {
 
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView listar() {
-        return new ModelAndView("cliente/lista", "clientes", clienteService.listarClientesAtivos());
+        return new ModelAndView("cliente/lista", "clientes", clienteService.listarClientes());
     }
 
     @RequestMapping(path = "/{id}", method = RequestMethod.GET)
@@ -42,11 +43,13 @@ public class ClienteController {
         return new ModelAndView("cliente/exibe", "cliente", clienteService.buscarClientePorId(id));
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping(path = "/editar/{id}", method = RequestMethod.GET)
     public ModelAndView viewEdita(@PathVariable("id") Long id) {
         return new ModelAndView("cliente/edita", "cliente", clienteService.buscarClientePorId(id));
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping(path = "/editar", method = RequestMethod.POST)
     public ModelAndView editar(@Valid @ModelAttribute("cliente") ClienteDTO dto, BindingResult result, RedirectAttributes redirectAttributes) {
         if (result.hasErrors()) {
@@ -58,11 +61,13 @@ public class ClienteController {
         return new ModelAndView("redirect:/clientes");
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping(path = "/remover/{id}", method = RequestMethod.GET)
     public ModelAndView viewRemove(@PathVariable("id") Long id) {
         return new ModelAndView("cliente/remove", "cliente", clienteService.buscarClientePorId(id));
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping(path = "/remover", method = RequestMethod.POST)
     public ModelAndView remover(ClienteDTO dto, RedirectAttributes redirectAttributes) {
         clienteService.desativar(dto);
@@ -70,11 +75,13 @@ public class ClienteController {
         return new ModelAndView("redirect:/clientes");
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping(path = "/incluir", method = RequestMethod.GET)
     public ModelAndView viewInclui() {
         return new ModelAndView("cliente/adicionar", "cliente", new ClienteDTO());
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping(path = "/incluir", method = RequestMethod.POST)
     public ModelAndView incluir(@Valid @ModelAttribute("cliente") ClienteDTO dto, BindingResult result, RedirectAttributes redirectAttributes) {
 

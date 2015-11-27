@@ -8,6 +8,7 @@ public class ClienteResumoDTO {
     private String cpf;
     private String email;
     private Long id;
+    private String situacao;
 
     public ClienteResumoDTO() {
     }
@@ -24,6 +25,7 @@ public class ClienteResumoDTO {
         nome = entity.getNome();
         cpf = entity.getCpf();
         email = entity.getEmail();
+        situacao = entity.getSituacao().toString();
     }
 
     public String getNome() {
@@ -56,6 +58,14 @@ public class ClienteResumoDTO {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getSituacao() {
+        return situacao;
+    }
+
+    public void setSituacao(String situacao) {
+        this.situacao = situacao;
     }
 
 }

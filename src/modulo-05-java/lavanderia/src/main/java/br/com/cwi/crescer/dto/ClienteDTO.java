@@ -31,6 +31,8 @@ public class ClienteDTO {
 
     private Long cep;
 
+    private int situacao;
+
     public Long getId() {
         return id;
     }
@@ -93,6 +95,14 @@ public class ClienteDTO {
 
     public void setCep(Long cep) {
         this.cep = cep;
+    }
+
+    public int getSituacao() {
+        return situacao;
+    }
+
+    public void setSituacao(int situacao) {
+        this.situacao = situacao;
     }
 
 }

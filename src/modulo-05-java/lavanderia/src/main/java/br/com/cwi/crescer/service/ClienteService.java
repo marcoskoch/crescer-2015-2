@@ -26,6 +26,19 @@ public class ClienteService {
         this.cidadeDAO = cidadeDAO;
     }
 
+    public List<ClienteResumoDTO> listarClientes() {
+
+        List<Cliente> clientes = clienteDAO.find();
+
+        List<ClienteResumoDTO> dtos = new ArrayList<ClienteResumoDTO>();
+
+        for (Cliente cliente : clientes) {
+            dtos.add(new ClienteResumoDTO(cliente));
+        }
+
+        return dtos;
+    }
+
     public List<ClienteResumoDTO> listarClientesAtivos() {
 
         List<Cliente> clientes = clienteDAO.findBySituacao(SituacaoCliente.ATIVO);
