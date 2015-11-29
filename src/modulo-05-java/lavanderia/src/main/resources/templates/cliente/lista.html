@@ -29,7 +29,9 @@
 					<td><a th:href="${ '/clientes/' + cliente.id}">Visualizar</a></td>
 					<td><a th:href="${'/clientes/editar/' + cliente.id}">Editar</a></td>
 					<td><a th:href="${'/clientes/remover/' + cliente.id}">Remover</a></td>
-					<td th:text="${cliente.situacao}"></td>
+					<td>
+						<div th:class="${cliente.situacao}" ></div>
+					</td>
 				</tr>
 			</table>
 

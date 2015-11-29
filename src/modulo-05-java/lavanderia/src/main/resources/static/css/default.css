@@ -15,3 +15,19 @@
 .btn-logout{
 	margin-top: 10px;
 }
+
+.ATIVO{
+	display: block;
+	margin: 0 auto;
+	width: 24px;
+	height: 24px;
+	background: url("../img/ativo.png");
+}
+
+.INATIVO{
+	display: block;
+	margin: 0 auto;
+	width: 24px;
+	height: 24px;
+	background: url("../img/inativo.png");
+}

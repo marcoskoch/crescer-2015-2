@@ -1,4 +1,4 @@
-package br.com.cwi.crescer.controller;
+package br.com.cwi.crescer.controller.cliente;
 
 import java.util.List;
 

@@ -5,6 +5,8 @@ import java.math.BigDecimal;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,7 +17,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "Produto")
-@SequenceGenerator(name = Produto.SEQUENCE_NAME, sequenceName = Produto.SEQUENCE_NAME)
+@SequenceGenerator(name = Produto.SEQUENCE_NAME, sequenceName = Produto.SEQUENCE_NAME, allocationSize = 1)
 public class Produto {
 
     public static final String SEQUENCE_NAME = "SEQ_Produto";
@@ -38,6 +40,18 @@ public class Produto {
     @Column(name = "Valor")
     @Basic(optional = false)
     private BigDecimal valor;
+
+    @Column(name = "Prazo")
+    @Basic(optional = false)
+    private Long prazo;
+
+    @Enumerated(EnumType.ORDINAL)
+    @Column(name = "Situacao", length = 1)
+    private SituacaoProduto situacao;
+
+    public static enum SituacaoProduto {
+        ATIVO, INATIVO
+    }
 
     public Long getIdProduto() {
         return idProduto;
@@ -69,5 +83,21 @@ public class Produto {
 
     public void setValor(BigDecimal valor) {
         this.valor = valor;
+    }
+
+    public SituacaoProduto getSituacao() {
+        return situacao;
+    }
+
+    public void setSituacao(SituacaoProduto situacao) {
+        this.situacao = situacao;
+    }
+
+    public Long getPrazo() {
+        return prazo;
+    }
+
+    public void setPrazo(Long prazo) {
+        this.prazo = prazo;
     }
 }

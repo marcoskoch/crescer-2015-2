@@ -1,5 +1,7 @@
 package br.com.cwi.crescer.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +21,10 @@ public class ServicoService {
 
     public Servico buscarPorId(Long id) {
         return servicoDAO.findById(id);
+    }
+
+    public List<Servico> listar() {
+        return servicoDAO.listAll();
     }
 
 }
