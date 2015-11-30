@@ -39,17 +39,11 @@ public class ClienteService {
         return dtos;
     }
 
-    public List<ClienteResumoDTO> listarClientesAtivos() {
+    public List<Cliente> listarClientesAtivos() {
 
         List<Cliente> clientes = clienteDAO.findBySituacao(SituacaoCliente.ATIVO);
+        return clientes;
 
-        List<ClienteResumoDTO> dtos = new ArrayList<ClienteResumoDTO>();
-
-        for (Cliente cliente : clientes) {
-            dtos.add(new ClienteResumoDTO(cliente));
-        }
-
-        return dtos;
     }
 
     public ClienteDTO buscarClientePorId(Long id) {

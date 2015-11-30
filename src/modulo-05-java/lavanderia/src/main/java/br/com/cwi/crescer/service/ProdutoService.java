@@ -56,4 +56,8 @@ public class ProdutoService {
         produtoDAO.save(entity);
     }
 
+    public ProdutoDTO buscarClientePorId(Long id) {
+        return ProdutoMapper.toDTO(produtoDAO.findById(id));
+    }
+
 }
