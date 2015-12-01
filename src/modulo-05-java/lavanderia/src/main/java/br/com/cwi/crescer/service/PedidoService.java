@@ -21,11 +21,13 @@ public class PedidoService {
 
     private PedidoDAO pedidoDAO;
     private ClienteDAO clienteDAO;
+    private ItemPedidoService itemPedidoService;
 
     @Autowired
-    public PedidoService(PedidoDAO pedidoDAO, ClienteDAO clienteDAO) {
+    public PedidoService(PedidoDAO pedidoDAO, ClienteDAO clienteDAO, ItemPedidoService itemPedidoService) {
         this.pedidoDAO = pedidoDAO;
         this.clienteDAO = clienteDAO;
+        this.itemPedidoService = itemPedidoService;
     }
 
     public Pedido buscarPorId(Long id) {
@@ -83,6 +85,7 @@ public class PedidoService {
         Pedido pedido = buscarPorId(id);
         if (pedido.getSituacao() == SituacaoPedido.PENDENTE) {
             pedido.setSituacao(SituacaoPedido.PROCESSANDO);
+            itemPedidoService.processandoItens(pedido.getItens());
             pedidoDAO.save(pedido);
         }
     }
