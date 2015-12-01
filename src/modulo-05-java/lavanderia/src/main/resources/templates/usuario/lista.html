@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="@{master}">
+<head>
+<title>Usuários</title>
+</head>
+
+<body>
+	<div class="container" layout:fragment="content">
+		<div class="starter-template">
+			<h2>Usuários</h2>
+			<a class="btn btn-primary pull-right" th:href="@{/usuarios/incluir}">Adicionar</a>
+		</div>
+
+		<div th:if="${not #lists.isEmpty(usuarios)}">
+
+			<table class="table table-striped table-bordered table-hover">
+
+				<tr>
+					<th>Usuário</th>
+					<th>Visualizar</th>
+					<th>Editar</th>
+					<th>Remover</th>
+				</tr>
+				<tr th:each="usuario : usuarios">
+					<td th:text="${usuario.username}">
+						<a th:href="@{|/usuarios/${usuario.username}|}"></a>
+					</td>
+					<td><a th:href="${ '/usuarios/' + usuario.username}">Visualizar</a></td>
+					<td><a th:href="${'/usuarios/editar/' + usuario.username}">Editar</a></td>
+					<td><a th:href="${'/usuarios/remover/' + usuario.username}">Remover</a></td>
+				</tr>
+			</table>
+
+		</div>
+	</div>
+</body>
+<div layout:fragment="custom-script">
+	<script type="text/javascript" th:src="@{/bootstrap/js/bootstrap-notify.js}"></script>
+
+	<script th:inline="javascript" th:if="${mensagem}" >
+		message = [[${mensagem}]];
+		$.notify({
+			message: message 
+		},{
+			type: 'success'
+		});
+	</script>
+</div>
+</html>

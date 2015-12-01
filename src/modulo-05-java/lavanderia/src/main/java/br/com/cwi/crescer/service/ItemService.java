@@ -57,5 +57,6 @@ public class ItemService {
             item.setSituacao(SituacaoItem.PROCESSADO);
             itemDAO.save(item);
         }
+        pedidoService.verificaSeTodosItensEstaoProcessados(item.getPedido());
     }
 }

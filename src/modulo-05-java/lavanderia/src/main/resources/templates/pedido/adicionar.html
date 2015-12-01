@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="@{master}">
+<head>
+<title>Adicionar</title>
+</head>
+
+<body>
+	<div class="container" layout:fragment="content">
+
+		<div class="starter-template">
+			<h2>Adicionar Pedido</h2>
+		</div>
+		
+		<form class="form-horizontal col-sm-5" role="form"
+			th:action="@{/pedidos/incluir}" th:object="${pedido}" method="post">
+			
+			<input th:field="*{idPedido}" type="hidden" />
+			
+			<div class="form-group" th:classappend="${#fields.hasErrors('idCliente')}? 'has-error'">
+				<label class="col-sm-12">Selecione o Cliente: </label>
+				<div class="col-sm-12">
+					<select class="form-control" th:field="*{idCliente}">
+						<option th:each="c : ${clientes}" th:text="${c.nome}"
+							th:value="${c.idCliente}"></option>
+					</select>
+					<span class="help-inline" th:errors="*{idCliente}">Name Error</span>
+				</div>
+			</div>
+		
+			<button class="btn btn-primary pull-right" type="submit">Salvar</button>
+
+		</form>
+		
+	</div>
+
+</body>
+
+</html>

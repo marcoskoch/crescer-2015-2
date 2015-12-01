@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 
 import br.com.cwi.crescer.dao.ClienteDAO;
 import br.com.cwi.crescer.dao.PedidoDAO;
+import br.com.cwi.crescer.domain.Item;
+import br.com.cwi.crescer.domain.Item.SituacaoItem;
 import br.com.cwi.crescer.domain.Pedido;
 import br.com.cwi.crescer.domain.Pedido.SituacaoPedido;
 import br.com.cwi.crescer.dto.PedidoDTO;
@@ -102,6 +104,22 @@ public class PedidoService {
         Pedido pedido = buscarPorId(id);
         if (pedido.getSituacao() != SituacaoPedido.ENCERRADO) {
             pedido.setSituacao(SituacaoPedido.CANCELADO);
+            pedidoDAO.save(pedido);
+        }
+    }
+
+    public void verificaSeTodosItensEstaoProcessados(Pedido pedido) {
+        List<Item> itens = pedido.getItens();
+        Boolean todoItensProcessados = true;
+
+        for (Item item : itens) {
+            if (item.getSituacao() != SituacaoItem.PROCESSADO) {
+                todoItensProcessados = false;
+            }
+        }
+
+        if (todoItensProcessados) {
+            pedido.setSituacao(SituacaoPedido.PROCESSADO);
             pedidoDAO.save(pedido);
         }
     }
