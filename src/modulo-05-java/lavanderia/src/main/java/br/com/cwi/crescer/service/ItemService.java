@@ -11,6 +11,7 @@ import br.com.cwi.crescer.dao.ProdutoDAO;
 import br.com.cwi.crescer.domain.Item;
 import br.com.cwi.crescer.domain.Item.SituacaoItem;
 import br.com.cwi.crescer.domain.Pedido;
+import br.com.cwi.crescer.domain.Pedido.SituacaoPedido;
 import br.com.cwi.crescer.dto.ItemDTO;
 import br.com.cwi.crescer.mapper.ItemMapper;
 
@@ -46,9 +47,13 @@ public class ItemService {
         entity.setValorUnitario(entity.getProduto().getValor());
         entity.setValorTotal(entity.getValorUnitario().multiply(entity.getPeso()));
         entity.setSituacao(SituacaoItem.PENDENTE);
-        pedidoService.atualizaValorBrutoPedido(entity.getPedido(), entity.getValorTotal());
-        pedidoService.atulizaDataDevolucao(entity.getPedido(), entity.getProduto().getPrazo());
-        itemDAO.save(entity);
+
+        if (entity.getPedido().getSituacao() == SituacaoPedido.PENDENTE) {
+            pedidoService.atualizaValorBrutoPedido(entity.getPedido(), entity.getValorTotal());
+            pedidoService.atulizaDataDevolucao(entity.getPedido(), entity.getProduto().getPrazo());
+            itemDAO.save(entity);
+        }
+
     }
 
     public void processaItem(Long id) {
