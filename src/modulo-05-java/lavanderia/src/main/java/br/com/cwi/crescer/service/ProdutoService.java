@@ -47,6 +47,11 @@ public class ProdutoService {
         return dtos;
     }
 
+    public List<Produto> listarProdutosCombo() {
+        List<Produto> produtos = produtoDAO.find();
+        return produtos;
+    }
+
     public void incluir(ProdutoDTO dto) {
         Produto entity = ProdutoMapper.getNewEntity(dto);
         entity.setSituacao(SituacaoProduto.ATIVO);

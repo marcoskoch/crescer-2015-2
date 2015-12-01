@@ -2,6 +2,7 @@ package br.com.cwi.crescer.service;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -53,6 +54,53 @@ public class PedidoService {
         entity.setSituacao(SituacaoPedido.PENDENTE);
 
         pedidoDAO.save(entity);
+    }
+
+    public void atualizaValorBrutoPedido(Pedido pedido, BigDecimal valorTotal) {
+        BigDecimal valorAtual = pedido.getValorBruto();
+        BigDecimal valorAtualizado = valorAtual.add(valorTotal);
+        pedido.setValorBruto(valorAtualizado);
+        pedidoDAO.save(pedido);
+    }
+
+    public void atulizaDataDevolucao(Pedido pedido, Long prazo) {
+        Date dataAtual = pedido.getDataEntrega();
+        Date dataProduto = addDays(pedido.getDataInclusao(), prazo.intValue());
+        if (dataAtual == null || dataProduto.after(dataAtual)) {
+            pedido.setDataEntrega(dataProduto);
+            pedidoDAO.save(pedido);
+        }
+    }
+
+    private Date addDays(Date date, int days) {
+        Calendar c = Calendar.getInstance();
+        c.setTime(date);
+        c.add(Calendar.DATE, days);
+        return c.getTime();
+    }
+
+    public void processaPedido(Long id) {
+        Pedido pedido = buscarPorId(id);
+        if (pedido.getSituacao() == SituacaoPedido.PENDENTE) {
+            pedido.setSituacao(SituacaoPedido.PROCESSANDO);
+            pedidoDAO.save(pedido);
+        }
+    }
+
+    public void encerraPedido(Long id) {
+        Pedido pedido = buscarPorId(id);
+        if (pedido.getSituacao() == SituacaoPedido.PROCESSADO) {
+            pedido.setSituacao(SituacaoPedido.ENCERRADO);
+            pedidoDAO.save(pedido);
+        }
+    }
+
+    public void cancelaPedido(Long id) {
+        Pedido pedido = buscarPorId(id);
+        if (pedido.getSituacao() != SituacaoPedido.ENCERRADO) {
+            pedido.setSituacao(SituacaoPedido.CANCELADO);
+            pedidoDAO.save(pedido);
+        }
     }
 
 }
